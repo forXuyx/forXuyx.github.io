@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-02T15:17:26.050Z</updated>
+  <updated>2022-01-02T15:23:02.318Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/archives/be82d226.html"/>
     <id>http://example.com/archives/be82d226.html</id>
     <published>2021-12-30T10:42:32.000Z</published>
-    <updated>2022-01-02T15:17:26.050Z</updated>
+    <updated>2022-01-02T15:23:02.318Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -31,6 +31,8 @@
     
     
     <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="演示" scheme="http://example.com/categories/%E6%BC%94%E7%A4%BA/"/>
     
     
     <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
