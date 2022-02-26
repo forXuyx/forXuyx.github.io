@@ -6,7 +6,7 @@
   <link href="http://forxuyx.github.io/atom.xml" rel="self"/>
   
   <link href="http://forxuyx.github.io/"/>
-  <updated>2022-02-26T13:00:06.099Z</updated>
+  <updated>2022-02-26T13:05:18.296Z</updated>
   <id>http://forxuyx.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统--计算机系统概述</title>
+    <link href="http://forxuyx.github.io/archives/ecd6af03.html"/>
+    <id>http://forxuyx.github.io/archives/ecd6af03.html</id>
+    <published>2022-02-26T13:04:23.000Z</published>
+    <updated>2022-02-26T13:05:18.296Z</updated>
+    
+    
+    <summary type="html">关于分治策略的学习笔记</summary>
+    
+    
+    
+    <category term="操作系统" scheme="http://forxuyx.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+    <category term="操作系统" scheme="http://forxuyx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>算法分析——分治策略</title>
