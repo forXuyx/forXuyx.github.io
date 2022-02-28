@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>操作系统--计算机系统概述 | 安静燃烧的火焰</title><meta name="keywords" content="操作系统"><meta name="author" content="小舟眺微风"><meta name="copyright" content="小舟眺微风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于分治策略的学习笔记">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>操作系统--计算机系统概述 | 安静燃烧的火焰</title><meta name="keywords" content="操作系统"><meta name="author" content="小舟眺微风"><meta name="copyright" content="小舟眺微风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="操作系统第一章计算机系统概述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统--计算机系统概述">
 <meta property="og:url" content="http://forxuyx.github.io/archives/ecd6af03.html">
 <meta property="og:site_name" content="安静燃烧的火焰">
-<meta property="og:description" content="关于分治策略的学习笔记">
+<meta property="og:description" content="操作系统第一章计算机系统概述">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://forxuyx.github.io/img/sf.jpg">
+<meta property="og:image" content="http://forxuyx.github.io/img/czxt.jpg">
 <meta property="article:published_time" content="2022-02-26T13:04:23.000Z">
-<meta property="article:modified_time" content="2022-02-26T13:05:35.096Z">
+<meta property="article:modified_time" content="2022-02-28T09:28:10.402Z">
 <meta property="article:author" content="小舟眺微风">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://forxuyx.github.io/img/sf.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://forxuyx.github.io/archives/ecd6af03"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-4EpBxa0Jzw"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="http://forxuyx.github.io/img/czxt.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://forxuyx.github.io/archives/ecd6af03"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-4EpBxa0Jzw"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
@@ -52,8 +52,8 @@
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2022-02-26 21:05:35'
+  isToc: true,
+  postUpdate: '2022-02-28 17:28:10'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -143,7 +143,162 @@
     }
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="安静燃烧的火焰" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/tx.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/sf.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">安静燃烧的火焰</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统--计算机系统概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-26T13:04:23.000Z" title="发表于 2022-02-26 21:04:23">2022-02-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-26T13:05:35.096Z" title="更新于 2022-02-26 21:05:35">2022-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">0</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统--计算机系统概述"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></div><div class="post_share"><div class="social-share" data-image="/./img/sf.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/archives/2679d5f4.html"><img class="next-cover" src="/./img/sf.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">算法分析——分治策略</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NTA3Ny8zMTU0NQ=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/tx.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小舟眺微风</div><div class="author-info__description">算法|机器学习|人工智能</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/forXuyx"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/forXuyx" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:523185731@qq.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://forxuyx.github.io/" target="_blank" title="Blog"><i class="fas fa-blog"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/ecd6af03.html" title="操作系统--计算机系统概述"><img src="/./img/sf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统--计算机系统概述"/></a><div class="content"><a class="title" href="/archives/ecd6af03.html" title="操作系统--计算机系统概述">操作系统--计算机系统概述</a><time datetime="2022-02-26T13:04:23.000Z" title="发表于 2022-02-26 21:04:23">2022-02-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/2679d5f4.html" title="算法分析——分治策略"><img src="/./img/sf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法分析——分治策略"/></a><div class="content"><a class="title" href="/archives/2679d5f4.html" title="算法分析——分治策略">算法分析——分治策略</a><time datetime="2021-01-03T02:42:32.000Z" title="发表于 2021-01-03 10:42:32">2021-01-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 小舟眺微风</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">你我山巅自相逢</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/tx.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/czxt.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">安静燃烧的火焰</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统--计算机系统概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-26T13:04:23.000Z" title="发表于 2022-02-26 21:04:23">2022-02-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-28T09:28:10.402Z" title="更新于 2022-02-28 17:28:10">2022-02-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统--计算机系统概述"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-操作系统的基本概念"><a href="#1-操作系统的基本概念" class="headerlink" title="1.操作系统的基本概念"></a>1.操作系统的基本概念</h1><h2 id="1-1操作系统概念"><a href="#1-1操作系统概念" class="headerlink" title="1.1操作系统概念"></a>1.1操作系统概念</h2><p>计算机系统自上而下可大致分为：硬件、操作系统、应用程序和用户。其中，<font color=red><strong>操作系统</strong></font>管理各种计算机硬件，为应用程序提供基础，并充当计算机硬件与用户之间的中介。</p>
+<p>在计算机系统的运行过程中，操作系统提供了正确使用各种计算机资源的方法（如CPU、内存、IO设备等）。</p>
+<p>综上，操作系统指控制和管理整个计算机系统的硬件与软件资源，合理地组织、调度计算机的工作与资源分配，进而为用户和其他软件提供方便接口与环境的程序集合，是计算机系统中最基本的<font color=red><strong>软件系统</strong></font>。</p>
+<h2 id="1-2操作系统特征"><a href="#1-2操作系统特征" class="headerlink" title="1.2操作系统特征"></a>1.2操作系统特征</h2><p>操作系统的基本特征包括：并发、共享、虚拟和异步。</p>
+<ol>
+<li><p>并发</p>
+<p>指两个或多个事件在同一<font color=red><strong>时间间隔</strong></font>内发生。操作系统的并发性是指计算机系统中存在多个运行的程序，因此它具有处理和调度多个程序同时执行的能力，且操作系统引入进程的目的是使程序并发执行。</p>
+<p>而<font color=red><strong>并行</strong></font>是指两个或多个事件在同一<font color=red><strong>时刻</strong></font>发生。</p>
+</li>
+<li><p>共享</p>
+<p>资源共享即为共享，指系统中的资源可供内存中的多个并发执行的进程共同使用，有两种方式：</p>
+<ul>
+<li><p>互斥共享方式</p>
+<p>系统中的某些资源，虽然可供多个进程使用，但为了保证结果不混淆，应规定一段时间内只允许一个进程访问该资源，我们将这种共享称之为互斥共享方式，将在一段时间内只允许一个进程访问的资源称为<font color=red><strong>临界资源</strong></font>。</p>
+</li>
+<li><p>同时访问方式</p>
+<p>有一类资源，它允许在一段时间内由多个进程“同时”访问。“同时”通常上是宏观的，而在微观上的形式可能是“分时共享”。</p>
+</li>
+</ul>
+<p>并发和共享是操作系统两个最基本的特征，两者之间互为存在的条件：①资源共享的实现是以程序的并发为条件的，如果没有并发，自然也不存在资源共享问题。②若系统不能对资源进行有效的管理，则必将影响程序的并发执行，甚至根本无法执行。</p>
+</li>
+<li><p>虚拟</p>
+<p>虚拟是将物理上的实体变为若干逻辑上的对应物，操作系统利用多种虚拟技术来实现虚拟处理器、虚拟内存和虚拟外部设备等。</p>
+<p>虚拟技术科归纳为：时分复用技术、空分复用技术</p>
+</li>
+<li><p>异步</p>
+<p>由于多道环境允许多个程序并发执行，但由于资源有限，进程的执行不是一贯到底的，而是走走停停，他以不可预知的速度向前推进，这就是进程的异步性</p>
+</li>
+</ol>
+<h2 id="1-3操作系统目标和功能"><a href="#1-3操作系统目标和功能" class="headerlink" title="1.3操作系统目标和功能"></a>1.3操作系统目标和功能</h2><ul>
+<li><p>作为系统资源的管理者</p>
+<ol>
+<li><p>处理机管理</p>
+<p>处理机的运行和分配都以进程（或线程）为基本单位，因而对处理机的管理科归结为对进程的管理。进程管理的主要功能包括进程控制、进程同步、进程通信、死锁处理、处理机调度等。</p>
+</li>
+<li><p>文件管理</p>
+<p>对文件存储空间进行管理、目录管理已经文件的读写管理和保护等。</p>
+</li>
+<li><p>设备管理</p>
+<p>完成用户的I/O请求，方便用户使用设备，包括缓冲管理、设备分配、设备处理和虚拟设备等功能。</p>
+</li>
+</ol>
+</li>
+<li><p>作为用户与计算机之间的接口</p>
+<p>主要为两类：命令接口与程序接口。</p>
+<ol>
+<li><p>命令接口</p>
+<ul>
+<li><p>联机命令接口</p>
+<p>又称交互式命令接口，适用于分时或者实时系统的接口。用户输入指令，操作系统执行，完成后返回终端，此时可输入下一条指令。</p>
+</li>
+<li><p>脱机命令接口</p>
+<p>又称批处理命令接口，适用于批处理系统，由一组作业控制命令组成，用户不能直接干预作业的运行，系统调度到该作业时，逐条执行作业上的语句，间接控制作业的运行。</p>
+</li>
+</ul>
+<p>联机命令可理解为：“雇主”说一句话，“工人”做一件事，强调<font color=red><strong>交互性</strong></font>。</p>
+<p>脱机命令可理解为：“雇主”列出任务清单，“工人”逐条完成清单上的任务，这就是<font color=red><strong>批处理</strong></font>。</p>
+</li>
+<li><p>程序接口</p>
+<p>程序接口由一组系统调用命令组成，用户可使用这些命令来请求操作系统为其提供服务。</p>
+</li>
+</ol>
+</li>
+<li><p>作为扩充机器</p>
+<p>通常将覆盖了软件的机器成为扩充机器或虚拟机。</p>
+</li>
+</ul>
+<h1 id="2-操作系统的发展与分类"><a href="#2-操作系统的发展与分类" class="headerlink" title="2.操作系统的发展与分类"></a>2.操作系统的发展与分类</h1><h2 id="2-1手工操作阶段（此阶段无操作系统）"><a href="#2-1手工操作阶段（此阶段无操作系统）" class="headerlink" title="2.1手工操作阶段（此阶段无操作系统）"></a>2.1手工操作阶段（此阶段无操作系统）</h2><p>用户在计算机上的所有工作需要人工干预，人机矛盾大。</p>
+<p>有两个突出缺点：①用户独占全机，不会出现资源被其他用户占用而等待的现象，但资源利用率低。②CPU等待手工操作，CPU利用不充分。</p>
+<h2 id="2-2批处理阶段"><a href="#2-2批处理阶段" class="headerlink" title="2.2批处理阶段"></a>2.2批处理阶段</h2><ul>
+<li><p>单道批处理系统</p>
+<p>系统对作业的处理是成批进行的，但是内存中始终保持一道作业，主要特征如下：</p>
+<ul>
+<li>自动性：在顺利的情况下，磁带上的一批作业能自动逐个运行，无需人工干预。</li>
+<li>顺序性：磁带上的各道作业顺序进入内存，即先调入内存的作业先完成。</li>
+<li>单道性：内存中仅有一道程序运行，当程序完成或发生异常后，才换入其他的后继程序。</li>
+</ul>
+<p>缺点：资源的利用率低，吞吐量小。</p>
+</li>
+<li><p>多道批处理系统</p>
+<p>多道程序设计技术允许多个程序同时进入内存，使他们在CPU中交替允许，共享系统中的资源，特点是多道、宏观上并行、微观上串行，优点：资源利用率高，系统吞吐量大。缺点：用户相应时间较长，不提供人机交互能力。</p>
+<ul>
+<li>多道：计算机内存中存放多道相互独立的程序。</li>
+<li>宏观上并行：同时进入系统的多道程序都处于运行过程中。</li>
+<li>微观上串行：内存中的多道程序轮流占用CPU，交替执行。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-3分时操作系统"><a href="#2-3分时操作系统" class="headerlink" title="2.3分时操作系统"></a>2.3分时操作系统</h2><p>所谓分时，是指把处理器的运行时间分成很短的时间片，按实际片轮流把处理器分配给各联机作业使用，主要特征如下：</p>
+<ul>
+<li>同时性：也称多路性，指允许多个终端用户同时使用一台计算机。</li>
+<li>交互性：用户能方便地与系统进行人机对话。</li>
+<li>独立性：系统中的多个用户可以彼此独立地进行操作，互不干扰。</li>
+<li>及时性：用户请求能在很短的时间内获得响应。</li>
+</ul>
+<p>虽然分时操作系统比较好的解决了人机交互问题，但在一些应用场合，需要系统在规定时间内做出处理（飞机订票或导弹制导），因此产生了实时系统。</p>
+<h2 id="2-4实时操作系统"><a href="#2-4实时操作系统" class="headerlink" title="2.4实时操作系统"></a>2.4实时操作系统</h2><p>为了能在某个时间限制内完成某些紧急任务而不需要时间片排队，诞生了实时操作系统。可分为两种情况：</p>
+<ul>
+<li>硬实时操作系统：某个动作必须绝对地在规定的时刻或时间范围发生。</li>
+<li>软实时操作系统：能够接受偶尔违反时间规定且不会引起任何永久性的损害。</li>
+</ul>
+<h2 id="2-5网络操作系统和分布式计算机系统"><a href="#2-5网络操作系统和分布式计算机系统" class="headerlink" title="2.5网络操作系统和分布式计算机系统"></a>2.5网络操作系统和分布式计算机系统</h2><ul>
+<li><p>网络操作系统：</p>
+<p>把计算机网络中各台计算机有机结合起来，实现各台计算机之间数据的互相传送。最主要的特点是网络中各种资源的共享及各台计算机之间的通信。</p>
+</li>
+<li><p>分布式计算机系统：</p>
+<p>由多台计算机组成并满足下列条件的系统：</p>
+<p>①系统中任意两台计算机通过通信方式交换信息。</p>
+<p>②系统中的每台计算机都具有同等的地位。</p>
+<p>③每台计算机的资源为所有用户共享。</p>
+<p>④系统中的任意台计算机都可以构成一个子系统，且能重构。</p>
+<p>⑤任何工作都可以分布在几台计算机上，并由他们并行工作，协同完成。</p>
+<p>该系统的主要特点是<font color=red><strong>分布性和并行性</strong></font>。</p>
+</li>
+</ul>
+<h2 id="2-6个人计算机操作系统"><a href="#2-6个人计算机操作系统" class="headerlink" title="2.6个人计算机操作系统"></a>2.6个人计算机操作系统</h2><p>目前使用最广泛的操作系统，常见的有Windows、Linux和Macintosh等。</p>
+<h1 id="3-操作系统的运行环境"><a href="#3-操作系统的运行环境" class="headerlink" title="3.操作系统的运行环境"></a>3.操作系统的运行环境</h1><h2 id="3-1操作系统的运行机制"><a href="#3-1操作系统的运行机制" class="headerlink" title="3.1操作系统的运行机制"></a>3.1操作系统的运行机制</h2><p>计算机系统中，CPU执行两种不同性质的程序：操作系统内核程序和用户自编程序。对操作系统而言，前者是后者的管理者，因此，“管理程序”要执行一些<font color=red><strong>特权指令</strong></font>。所谓特权指令，指计算机中不允许用户直接使用的指令。在具体实现上，将CPU的状态划分为用户态和核心态。用户自编程序运行在用户态，操作系统内核程序运行在核心态。大多数操作系统的内核包括四方面内容：</p>
+<ol>
+<li><p>时钟管理</p>
+<p>在计算机的各部件中，时钟是最关键的设备。主要功能：</p>
+<ul>
+<li>计时，操作系统通过时钟管理，向用户提供标准的系统时间。</li>
+<li>通过时间中断的管理，实现进程的切换。</li>
+</ul>
+</li>
+<li><p>中断机制</p>
+<p>引入中断的初衷是提高多道程序运行环境中CPU的利用率，而且主要针对外部设备，后面逐步发展为操作系统中各项操作的基础。</p>
+<p>中断机制中，只有一小部分功能属于内核，负责保护和恢复中断现场的信息，转移控制权到相关的处理程序。可以减少中断的处理时间，提高系统的并行处理能力。</p>
+</li>
+<li><p>原语</p>
+<p>可被调用的公用小程序，各自完成一个规定的操作，特点如下：</p>
+<ul>
+<li>处于操作系统最底层，最接近硬件的部分。</li>
+<li>具有原子性，操作只能一气呵成。</li>
+<li>运行时间短，调用频繁</li>
+</ul>
+<p>定义原语的直接方法是关闭中断，让其所有动作不可分割地完成后再打开中断。</p>
+<p>系统中的设备驱动、CPU切换、进程通信等功能中部分操作都可以定义为原语，使他们成为内核的组成部分。</p>
+</li>
+<li><p>系统控制的数据结构及处理</p>
+<p>系统中用来登记状态信息的数据结构很多，如作业控制块、进程控制块、设备控制块等，为了实现有效的管理，需要做一些基本的操作，常见操作有以下三种：</p>
+<ol>
+<li>进程管理：进程状态管理、进程调度和分配、创建与撤销进程控制块等。</li>
+<li>存储器管理：存储器空间的分配和回收、内存信息保护程序、代码对换程序等。</li>
+<li>设备管理：缓冲区管理、设备分配和回收等。</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-2中断和异常的概念"><a href="#3-2中断和异常的概念" class="headerlink" title="3.2中断和异常的概念"></a>3.2中断和异常的概念</h2><p>发生中断和异常时，运行用户态的CPU会立即进入核心态，这是通过硬件实现的。</p>
+<p>中断：也称外中断，指来自CPU执行指令以外的事件发生。</p>
+<p>异常：也称内中断，指源自CPU执行指令内部的事件。</p>
+<h2 id="3-3系统调用"><a href="#3-3系统调用" class="headerlink" title="3.3系统调用"></a>3.3系统调用</h2><p>指用户在程序中调用操作系统的一些子功能，这些功能大致可分为：设备管理、文件管理、进程控制、进程通信和内存管理。</p>
+<h1 id="4-操作系统的体系结构"><a href="#4-操作系统的体系结构" class="headerlink" title="4.操作系统的体系结构"></a>4.操作系统的体系结构</h1><p>操作系统有两种主要的体系结构：大内核和微内核。</p>
+<p>大内核体系结构将操作系统的主要功能模块都作为一个紧密联系的整体运行在核心态，从而为用户提供高性能的系统服务。各管理模块之间共享信息，能有效利用相互之间的有效特性，有无可比拟的性能优势。</p>
+<p>微内核体系结构将内核中最基本的功能保留在内核，将那些不需要在核心态执行的功能转移到用户态执行。分离了内核与服务，服务与服务，使他们之间的接口更加清晰，保证了操作系统的可靠性。微内核结构的最大问题是性能问题，因为需要频繁地在核心态和用户态之间切换。</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></div><div class="post_share"><div class="social-share" data-image="/./img/czxt.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/archives/2679d5f4.html"><img class="next-cover" src="/./img/sf.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">算法分析——分治策略</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NTA3Ny8zMTU0NQ=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/tx.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小舟眺微风</div><div class="author-info__description">算法|机器学习|人工智能</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/forXuyx"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/forXuyx" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:523185731@qq.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://forxuyx.github.io/" target="_blank" title="Blog"><i class="fas fa-blog"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">1.操作系统的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">1.1操作系统概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%89%B9%E5%BE%81"><span class="toc-number">1.2.</span> <span class="toc-text">1.2操作系统特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9B%AE%E6%A0%87%E5%92%8C%E5%8A%9F%E8%83%BD"><span class="toc-number">1.3.</span> <span class="toc-text">1.3操作系统目标和功能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">2.操作系统的发展与分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E6%89%8B%E5%B7%A5%E6%93%8D%E4%BD%9C%E9%98%B6%E6%AE%B5%EF%BC%88%E6%AD%A4%E9%98%B6%E6%AE%B5%E6%97%A0%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">2.1手工操作阶段（此阶段无操作系统）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2%E6%89%B9%E5%A4%84%E7%90%86%E9%98%B6%E6%AE%B5"><span class="toc-number">2.2.</span> <span class="toc-text">2.2批处理阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3%E5%88%86%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.</span> <span class="toc-text">2.3分时操作系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.4.</span> <span class="toc-text">2.4实时操作系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.5.</span> <span class="toc-text">2.5网络操作系统和分布式计算机系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6%E4%B8%AA%E4%BA%BA%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.6.</span> <span class="toc-text">2.6个人计算机操作系统</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">3.操作系统的运行环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="toc-number">3.1.</span> <span class="toc-text">3.1操作系统的运行机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">3.2.</span> <span class="toc-text">3.2中断和异常的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="toc-number">3.3.</span> <span class="toc-text">3.3系统调用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">4.操作系统的体系结构</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/ecd6af03.html" title="操作系统--计算机系统概述"><img src="/./img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统--计算机系统概述"/></a><div class="content"><a class="title" href="/archives/ecd6af03.html" title="操作系统--计算机系统概述">操作系统--计算机系统概述</a><time datetime="2022-02-26T13:04:23.000Z" title="发表于 2022-02-26 21:04:23">2022-02-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/2679d5f4.html" title="算法分析——分治策略"><img src="/./img/sf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法分析——分治策略"/></a><div class="content"><a class="title" href="/archives/2679d5f4.html" title="算法分析——分治策略">算法分析——分治策略</a><time datetime="2021-01-03T02:42:32.000Z" title="发表于 2021-01-03 10:42:32">2021-01-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 小舟眺微风</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">你我山巅自相逢</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
