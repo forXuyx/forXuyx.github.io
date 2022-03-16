@@ -38,6 +38,54 @@
   </entry>
   
   <entry>
+    <title>操作系统--计算机系统概述</title>
+    <link href="http://forxuyx.github.io/archives/ecd6af03.html"/>
+    <id>http://forxuyx.github.io/archives/ecd6af03.html</id>
+    <published>2022-02-26T13:04:23.000Z</published>
+    <updated>2022-02-28T12:41:50.216Z</updated>
+    
+    
+    <summary type="html">操作系统第一章计算机系统概述</summary>
+    
+    
+    
+    <category term="操作系统" scheme="http://forxuyx.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="工程实践" scheme="http://forxuyx.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/"/>
+    
+    
+    <category term="操作系统" scheme="http://forxuyx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ARIMA模型原理剖析</title>
+    <link href="http://forxuyx.github.io/archives/2679d5f4.html"/>
+    <id>http://forxuyx.github.io/archives/2679d5f4.html</id>
+    <published>2021-03-16T10:42:32.000Z</published>
+    <updated>2022-03-16T11:30:21.215Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-平稳性要求"><a href="#1-平稳性要求" class="headerlink" title="1.平稳性要求"></a>1.平稳性要求</h1><p>自回归模型描述当前值与历史值之间的关系，用变量自身的历史时间数据对自身进行预测。因此，自回归模型必须满足平稳性的要求。</p><p>平稳性就是要求经由样本时间序列所得到的拟合曲线在未来一段时间内仍能顺着现有的形态惯性地延续下去。平稳性要求序列的均值和方差不发生明显变化。通常有以下两种平稳模式：</p><ul><li>严平稳：严平稳表示的分布不随时间的改变而改变。如白噪声(正太),无论怎么取，都是期望为0，方差为1。</li><li>宽平稳：期望与相关系数(依赖性)不变。未来某时刻的t的值Xt就要依赖于它的过去信息，所以需要依赖性。这种依赖性不能有明显的变化。</li></ul><p>我们所得到的数据在一般情况下并非平稳序列，但经过差分后，我们的数据可以变得平稳，差分的实现可通过pandas包中的diff()函数得到。</p><p>通常利用ADF单位根检验来判断是否已经平稳，可从statsmodels中导入adfuller包进行判断，若得到的统计量显著小于3个置信度（1%，5%。10%）的临界统计值时，则可说明当前阶数下，时间序列已经趋于平稳。</p><p>得到平稳序列后，再从statsmodels中导入arorr_ljungbox，若输出的p值小于0.05，则可确定序列为平稳非白噪声序列。</p><h1 id="2-ARIMA模型介绍"><a href="#2-ARIMA模型介绍" class="headerlink" title="2.ARIMA模型介绍"></a>2.ARIMA模型介绍</h1><h2 id="2-1自回归模型AR"><a href="#2-1自回归模型AR" class="headerlink" title="2.1自回归模型AR"></a>2.1自回归模型AR</h2><p>自回归模型描述当前值与历史值之间的关系，用变量自身的历史时间数据对自身进行预测。自回归模型必须满足平稳性的要求。</p><p>自回归模型首先需要确定一个阶数p，表示用几期的历史值来预测当前值。p阶自回归模型的公式定义为：</p><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy80MTU1OTg2LWUzYjIzYjEwMGRiZTgxZjMucG5n?x-oss-process=image/format,png" alt="img"></p><p>上式中yt是当前值,u是常数项,p是阶数 ri是自相关系数,et是误差。</p><p>自回归模型有很多的限制：<br> 1、自回归模型是用自身的数据进行预测<br> 2、时间序列数据必须具有平稳性<br> 3、自回归只适用于预测与自身前期相关的现象</p><h2 id="2-2移动平均模型MA"><a href="#2-2移动平均模型MA" class="headerlink" title="2.2移动平均模型MA"></a>2.2移动平均模型MA</h2><p>移动平均模型关注的是自回归模型中的误差项的累加 ，q阶自回归过程的公式定义如下：</p><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy80MTU1OTg2LWEzMzI4NGQ1ZDc5MWEwZDgucG5n?x-oss-process=image/format,png" alt="img"></p><p>移动平均法能有效地消除预测中的随机波动。</p><h2 id="2-3差分自回归移动平均模型ARIMA"><a href="#2-3差分自回归移动平均模型ARIMA" class="headerlink" title="2.3差分自回归移动平均模型ARIMA"></a>2.3差分自回归移动平均模型ARIMA</h2><p>将自回归模型、移动平均模型和差分法结合，我们就得到了差分自回归移动平均模型ARIMA(p,d,q)，其中d是需要对数据进行差分的阶数。</p><h1 id="3-建立ARIMA模型的过程"><a href="#3-建立ARIMA模型的过程" class="headerlink" title="3.建立ARIMA模型的过程"></a>3.建立ARIMA模型的过程</h1><p>一般来说，建立ARIMA模型一般有三个阶段，分别是模型识别和定阶、参数估计和模型检验，接下来，我们一步步来介绍：</p><h2 id="3-1模型识别和定阶"><a href="#3-1模型识别和定阶" class="headerlink" title="3.1模型识别和定阶"></a>3.1模型识别和定阶</h2><p>模型的识别问题和定阶问题，主要是确定p，d，q三个参数，差分的阶数d一般通过观察图示，1阶或2阶即可。这里我们主要介绍p和q的确定。我们首先介绍两个函数。</p><p><strong>自相关函数ACF(autocorrelation function)</strong><br> 自相关函数ACF描述的是时间序列观测值与其过去的观测值之间的线性相关性。计算公式如下：</p><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy80MTU1OTg2LWZmZmQ5MmEzMGQwNjg5MzEucG5n?x-oss-process=image/format,png" alt="img"></p><p>其中k代表滞后期数，如果k=2，则代表yt和yt-2</p><p><strong>偏自相关函数PACF(partial autocorrelation function)</strong><br> 偏自相关函数PACF描述的是在给定中间观测值的条件下，时间序列观测值预期过去的观测值之间的线性相关性。</p><p>举个简单的例子，假设k=3，那么我们描述的是yt和yt-3之间的相关性，但是这个相关性还受到yt-1和yt-2的影响。PACF剔除了这个影响，而ACF包含这个影响。</p><p><strong>拖尾和截尾</strong><br> 拖尾指序列以指数率单调递减或震荡衰减，而截尾指序列从某个时点变得非常小：</p><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy80MTU1OTg2LTRhZjYwZGVkZjlmODZlMGYucG5n?x-oss-process=image/format,png" alt="img"></p><p>出现以下情况，通常视为(偏)自相关系数d阶截尾：<br> 1）在最初的d阶明显大于2倍标准差范围<br> 2）之后几乎95%的(偏)自相关系数都落在2倍标准差范围以内<br> 3）且由非零自相关系数衰减为在零附近小值波动的过程非常突然</p><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy80MTU1OTg2LWIyYzdkYzk0Zjc4MTE3NjMucG5n?x-oss-process=image/format,png" alt="img"></p><p>出现以下情况，通常视为(偏)自相关系数拖尾：<br> 1）如果有超过5%的样本(偏)自相关系数都落入2倍标准差范围之外<br> 2）或者是由显著非0的(偏)自相关系数衰减为小值波动的过程比较缓慢或非常连续。</p><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy80MTU1OTg2LWMwZTRmZTFkMmVjY2E3MGIucG5n?x-oss-process=image/format,png" alt="img"></p><p><strong>p，q阶数的确定</strong><br> 根据刚才判定截尾和拖尾的准则，p，q的确定基于如下的规则：</p><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy80MTU1OTg2LTg2YTMyOWE0NDVmOGVhYjcucG5n?x-oss-process=image/format,png" alt="img"></p><p>根据不同的截尾和拖尾的情况，我们可以选择AR模型，也可以选择MA模型，当然也可以选择ARIMA模型</p><p>调用statsmodels中的plot_acf和plot_pacf函数对所选时间序列进行图表的绘制并进行判断。</p><h2 id="3-2参数估计"><a href="#3-2参数估计" class="headerlink" title="3.2参数估计"></a>3.2参数估计</h2><p>在上文中，我们通过观察ACF图和PACF图来确定了p和q的值，这样选出来的值有着很强的主观性。通常来说，p和q的值越小，模型就更为优秀，所以，我们接下来采用信息准则函数法来确定模型的p值和q值。</p><p>常用的信息准则函数法有下面几种：</p><ul><li><p>AIC准则：</p><p>AIC准则全称为全称是最小化信息量准则，计算公式为：AIC = 2 *（模型参数的个数）-2ln（模型的极大似然函数）</p></li><li><p>BIC准则：</p><p>AIC准则存在一定的不足之处。当样本容量很大时，在AIC准则中拟合误差提供的信息就要受到样本容量的放大，而参数个数的惩罚因子却和样本容量没关系（如ARIMA模型，仅有p和q值），因此当样本容量很大时，使用AIC准则选择的模型不收敛与真实模型，它通常比真实模型所含的未知参数个数要多。BIC贝叶斯信息准则弥补了AIC的不足，计算公式为：BIC = ln(n) * (模型中参数的个数) - 2ln(模型的极大似然函数值)，n是样本容量。</p></li></ul><p>可利用statsmodels中的arma_order_select_ic函数来获取AIC和BIC准则下的最优值。</p><p>一般来说，BIC准则得到的阶数较AIC低。</p><h2 id="3-3模型检验"><a href="#3-3模型检验" class="headerlink" title="3.3模型检验"></a>3.3模型检验</h2><p>这里的模型检验主要有两个：<br> 1）检验参数估计的显著性（t检验）<br> 2）检验残差序列的随机性，即残差之间是独立的</p><p>残差序列的随机性可以通过自相关函数法来检验，即做残差的自相关函数图，通过图表来观察是否通过检验。</p><h2 id="3-4模型预测"><a href="#3-4模型预测" class="headerlink" title="3.4模型预测"></a>3.4模型预测</h2><p>预测主要有两个函数，一个是predict函数，一个是forecast函数，predict中进行预测的时间段必须在我们训练ARIMA模型的数据中，forecast则是对训练数据集末尾下一个时间段的值进行预估。</p><p>换言之：predict函数可看我们构建的模型的预测值与当前已知的数据的差异情况，而forecast函数则是基于我们所构建好的模型对下一个时间段进行预估。</p><p>需要注意：利用模型向前预测的时期越长，预测误差将会越大。</p>]]></content>
+    
+    
+    <summary type="html">关于ARIMA模型的理解</summary>
+    
+    
+    
+    <category term="数据挖掘" scheme="http://forxuyx.github.io/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
+    
+    <category term="学习" scheme="http://forxuyx.github.io/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="模型介绍" scheme="http://forxuyx.github.io/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D/"/>
+    
+    
+    <category term="数据挖掘" scheme="http://forxuyx.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
+    
+    <category term="自回归模型" scheme="http://forxuyx.github.io/tags/%E8%87%AA%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>算法分析——分治策略</title>
     <link href="http://forxuyx.github.io/archives/2679d5f4.html"/>
     <id>http://forxuyx.github.io/archives/2679d5f4.html</id>
@@ -61,6 +109,31 @@
     <category term="算法" scheme="http://forxuyx.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
     <category term="分治" scheme="http://forxuyx.github.io/tags/%E5%88%86%E6%B2%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法分析——动态规划</title>
+    <link href="http://forxuyx.github.io/archives/e1d9d957.html"/>
+    <id>http://forxuyx.github.io/archives/e1d9d957.html</id>
+    <published>2021-01-03T02:42:32.000Z</published>
+    <updated>2022-03-01T13:03:47.213Z</updated>
+    
+    
+    <summary type="html">关于动态规划的学习笔记</summary>
+    
+    
+    
+    <category term="算法" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="学习" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="动态规划" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+    
+    <category term="算法" scheme="http://forxuyx.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="动态规划" scheme="http://forxuyx.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
