@@ -8,14 +8,12 @@
       <link href="/archives/ecd6af03.html"/>
       <url>/archives/ecd6af03.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="1-操作系统的基本概念"><a href="#1-操作系统的基本概念" class="headerlink" title="1.操作系统的基本概念"></a>1.操作系统的基本概念</h1><h2 id="1-1操作系统概念"><a href="#1-1操作系统概念" class="headerlink" title="1.1操作系统概念"></a>1.1操作系统概念</h2><p>计算机系统自上而下可大致分为：硬件、操作系统、应用程序和用户。其中，<font color=red><strong>操作系统</strong></font>管理各种计算机硬件，为应用程序提供基础，并充当计算机硬件与用户之间的中介。</p><p>在计算机系统的运行过程中，操作系统提供了正确使用各种计算机资源的方法（如CPU、内存、IO设备等）。</p><p>综上，操作系统指控制和管理整个计算机系统的硬件与软件资源，合理地组织、调度计算机的工作与资源分配，进而为用户和其他软件提供方便接口与环境的程序集合，是计算机系统中最基本的<font color=red><strong>软件系统</strong></font>。</p><h2 id="1-2操作系统特征"><a href="#1-2操作系统特征" class="headerlink" title="1.2操作系统特征"></a>1.2操作系统特征</h2><p>操作系统的基本特征包括：并发、共享、虚拟和异步。</p><ol><li><p>并发</p><p>指两个或多个事件在同一<font color=red><strong>时间间隔</strong></font>内发生。操作系统的并发性是指计算机系统中存在多个运行的程序，因此它具有处理和调度多个程序同时执行的能力，且操作系统引入进程的目的是使程序并发执行。</p><p>而<font color=red><strong>并行</strong></font>是指两个或多个事件在同一<font color=red><strong>时刻</strong></font>发生。</p></li><li><p>共享</p><p>资源共享即为共享，指系统中的资源可供内存中的多个并发执行的进程共同使用，有两种方式：</p><ul><li><p>互斥共享方式</p><p>系统中的某些资源，虽然可供多个进程使用，但为了保证结果不混淆，应规定一段时间内只允许一个进程访问该资源，我们将这种共享称之为互斥共享方式，将在一段时间内只允许一个进程访问的资源称为<font color=red><strong>临界资源</strong></font>。</p></li><li><p>同时访问方式</p><p>有一类资源，它允许在一段时间内由多个进程“同时”访问。“同时”通常上是宏观的，而在微观上的形式可能是“分时共享”。</p></li></ul><p>并发和共享是操作系统两个最基本的特征，两者之间互为存在的条件：①资源共享的实现是以程序的并发为条件的，如果没有并发，自然也不存在资源共享问题。②若系统不能对资源进行有效的管理，则必将影响程序的并发执行，甚至根本无法执行。</p></li><li><p>虚拟</p><p>虚拟是将物理上的实体变为若干逻辑上的对应物，操作系统利用多种虚拟技术来实现虚拟处理器、虚拟内存和虚拟外部设备等。</p><p>虚拟技术科归纳为：时分复用技术、空分复用技术</p></li><li><p>异步</p><p>由于多道环境允许多个程序并发执行，但由于资源有限，进程的执行不是一贯到底的，而是走走停停，他以不可预知的速度向前推进，这就是进程的异步性</p></li></ol><h2 id="1-3操作系统目标和功能"><a href="#1-3操作系统目标和功能" class="headerlink" title="1.3操作系统目标和功能"></a>1.3操作系统目标和功能</h2><ul><li><p>作为系统资源的管理者</p><ol><li><p>处理机管理</p><p>处理机的运行和分配都以进程（或线程）为基本单位，因而对处理机的管理科归结为对进程的管理。进程管理的主要功能包括进程控制、进程同步、进程通信、死锁处理、处理机调度等。</p></li><li><p>文件管理</p><p>对文件存储空间进行管理、目录管理已经文件的读写管理和保护等。</p></li><li><p>设备管理</p><p>完成用户的I/O请求，方便用户使用设备，包括缓冲管理、设备分配、设备处理和虚拟设备等功能。</p></li></ol></li><li><p>作为用户与计算机之间的接口</p><p>主要为两类：命令接口与程序接口。</p><ol><li><p>命令接口</p><ul><li><p>联机命令接口</p><p>又称交互式命令接口，适用于分时或者实时系统的接口。用户输入指令，操作系统执行，完成后返回终端，此时可输入下一条指令。</p></li><li><p>脱机命令接口</p><p>又称批处理命令接口，适用于批处理系统，由一组作业控制命令组成，用户不能直接干预作业的运行，系统调度到该作业时，逐条执行作业上的语句，间接控制作业的运行。</p></li></ul><p>联机命令可理解为：“雇主”说一句话，“工人”做一件事，强调<font color=red><strong>交互性</strong></font>。</p><p>脱机命令可理解为：“雇主”列出任务清单，“工人”逐条完成清单上的任务，这就是<font color=red><strong>批处理</strong></font>。</p></li><li><p>程序接口</p><p>程序接口由一组系统调用命令组成，用户可使用这些命令来请求操作系统为其提供服务。</p></li></ol></li><li><p>作为扩充机器</p><p>通常将覆盖了软件的机器成为扩充机器或虚拟机。</p></li></ul><h1 id="2-操作系统的发展与分类"><a href="#2-操作系统的发展与分类" class="headerlink" title="2.操作系统的发展与分类"></a>2.操作系统的发展与分类</h1><h2 id="2-1手工操作阶段（此阶段无操作系统）"><a href="#2-1手工操作阶段（此阶段无操作系统）" class="headerlink" title="2.1手工操作阶段（此阶段无操作系统）"></a>2.1手工操作阶段（此阶段无操作系统）</h2><p>用户在计算机上的所有工作需要人工干预，人机矛盾大。</p><p>有两个突出缺点：①用户独占全机，不会出现资源被其他用户占用而等待的现象，但资源利用率低。②CPU等待手工操作，CPU利用不充分。</p><h2 id="2-2批处理阶段"><a href="#2-2批处理阶段" class="headerlink" title="2.2批处理阶段"></a>2.2批处理阶段</h2><ul><li><p>单道批处理系统</p><p>系统对作业的处理是成批进行的，但是内存中始终保持一道作业，主要特征如下：</p><ul><li>自动性：在顺利的情况下，磁带上的一批作业能自动逐个运行，无需人工干预。</li><li>顺序性：磁带上的各道作业顺序进入内存，即先调入内存的作业先完成。</li><li>单道性：内存中仅有一道程序运行，当程序完成或发生异常后，才换入其他的后继程序。</li></ul><p>缺点：资源的利用率低，吞吐量小。</p></li><li><p>多道批处理系统</p><p>多道程序设计技术允许多个程序同时进入内存，使他们在CPU中交替允许，共享系统中的资源，特点是多道、宏观上并行、微观上串行，优点：资源利用率高，系统吞吐量大。缺点：用户相应时间较长，不提供人机交互能力。</p><ul><li>多道：计算机内存中存放多道相互独立的程序。</li><li>宏观上并行：同时进入系统的多道程序都处于运行过程中。</li><li>微观上串行：内存中的多道程序轮流占用CPU，交替执行。</li></ul></li></ul><h2 id="2-3分时操作系统"><a href="#2-3分时操作系统" class="headerlink" title="2.3分时操作系统"></a>2.3分时操作系统</h2><p>所谓分时，是指把处理器的运行时间分成很短的时间片，按实际片轮流把处理器分配给各联机作业使用，主要特征如下：</p><ul><li>同时性：也称多路性，指允许多个终端用户同时使用一台计算机。</li><li>交互性：用户能方便地与系统进行人机对话。</li><li>独立性：系统中的多个用户可以彼此独立地进行操作，互不干扰。</li><li>及时性：用户请求能在很短的时间内获得响应。</li></ul><p>虽然分时操作系统比较好的解决了人机交互问题，但在一些应用场合，需要系统在规定时间内做出处理（飞机订票或导弹制导），因此产生了实时系统。</p><h2 id="2-4实时操作系统"><a href="#2-4实时操作系统" class="headerlink" title="2.4实时操作系统"></a>2.4实时操作系统</h2><p>为了能在某个时间限制内完成某些紧急任务而不需要时间片排队，诞生了实时操作系统。可分为两种情况：</p><ul><li>硬实时操作系统：某个动作必须绝对地在规定的时刻或时间范围发生。</li><li>软实时操作系统：能够接受偶尔违反时间规定且不会引起任何永久性的损害。</li></ul><h2 id="2-5网络操作系统和分布式计算机系统"><a href="#2-5网络操作系统和分布式计算机系统" class="headerlink" title="2.5网络操作系统和分布式计算机系统"></a>2.5网络操作系统和分布式计算机系统</h2><ul><li><p>网络操作系统：</p><p>把计算机网络中各台计算机有机结合起来，实现各台计算机之间数据的互相传送。最主要的特点是网络中各种资源的共享及各台计算机之间的通信。</p></li><li><p>分布式计算机系统：</p><p>由多台计算机组成并满足下列条件的系统：</p><p>①系统中任意两台计算机通过通信方式交换信息。</p><p>②系统中的每台计算机都具有同等的地位。</p><p>③每台计算机的资源为所有用户共享。</p><p>④系统中的任意台计算机都可以构成一个子系统，且能重构。</p><p>⑤任何工作都可以分布在几台计算机上，并由他们并行工作，协同完成。</p><p>该系统的主要特点是<font color=red><strong>分布性和并行性</strong></font>。</p></li></ul><h2 id="2-6个人计算机操作系统"><a href="#2-6个人计算机操作系统" class="headerlink" title="2.6个人计算机操作系统"></a>2.6个人计算机操作系统</h2><p>目前使用最广泛的操作系统，常见的有Windows、Linux和Macintosh等。</p><h1 id="3-操作系统的运行环境"><a href="#3-操作系统的运行环境" class="headerlink" title="3.操作系统的运行环境"></a>3.操作系统的运行环境</h1><h2 id="3-1操作系统的运行机制"><a href="#3-1操作系统的运行机制" class="headerlink" title="3.1操作系统的运行机制"></a>3.1操作系统的运行机制</h2><p>计算机系统中，CPU执行两种不同性质的程序：操作系统内核程序和用户自编程序。对操作系统而言，前者是后者的管理者，因此，“管理程序”要执行一些<font color=red><strong>特权指令</strong></font>。所谓特权指令，指计算机中不允许用户直接使用的指令。在具体实现上，将CPU的状态划分为用户态和核心态。用户自编程序运行在用户态，操作系统内核程序运行在核心态。大多数操作系统的内核包括四方面内容：</p><ol><li><p>时钟管理</p><p>在计算机的各部件中，时钟是最关键的设备。主要功能：</p><ul><li>计时，操作系统通过时钟管理，向用户提供标准的系统时间。</li><li>通过时间中断的管理，实现进程的切换。</li></ul></li><li><p>中断机制</p><p>引入中断的初衷是提高多道程序运行环境中CPU的利用率，而且主要针对外部设备，后面逐步发展为操作系统中各项操作的基础。</p><p>中断机制中，只有一小部分功能属于内核，负责保护和恢复中断现场的信息，转移控制权到相关的处理程序。可以减少中断的处理时间，提高系统的并行处理能力。</p></li><li><p>原语</p><p>可被调用的公用小程序，各自完成一个规定的操作，特点如下：</p><ul><li>处于操作系统最底层，最接近硬件的部分。</li><li>具有原子性，操作只能一气呵成。</li><li>运行时间短，调用频繁</li></ul><p>定义原语的直接方法是关闭中断，让其所有动作不可分割地完成后再打开中断。</p><p>系统中的设备驱动、CPU切换、进程通信等功能中部分操作都可以定义为原语，使他们成为内核的组成部分。</p></li><li><p>系统控制的数据结构及处理</p><p>系统中用来登记状态信息的数据结构很多，如作业控制块、进程控制块、设备控制块等，为了实现有效的管理，需要做一些基本的操作，常见操作有以下三种：</p><ol><li>进程管理：进程状态管理、进程调度和分配、创建与撤销进程控制块等。</li><li>存储器管理：存储器空间的分配和回收、内存信息保护程序、代码对换程序等。</li><li>设备管理：缓冲区管理、设备分配和回收等。</li></ol></li></ol><h2 id="3-2中断和异常的概念"><a href="#3-2中断和异常的概念" class="headerlink" title="3.2中断和异常的概念"></a>3.2中断和异常的概念</h2><p>发生中断和异常时，运行用户态的CPU会立即进入核心态，这是通过硬件实现的。</p><p>中断：也称外中断，指来自CPU执行指令以外的事件发生。</p><p>异常：也称内中断，指源自CPU执行指令内部的事件。</p><h2 id="3-3系统调用"><a href="#3-3系统调用" class="headerlink" title="3.3系统调用"></a>3.3系统调用</h2><p>指用户在程序中调用操作系统的一些子功能，这些功能大致可分为：设备管理、文件管理、进程控制、进程通信和内存管理。</p><h1 id="4-操作系统的体系结构"><a href="#4-操作系统的体系结构" class="headerlink" title="4.操作系统的体系结构"></a>4.操作系统的体系结构</h1><p>操作系统有两种主要的体系结构：大内核和微内核。</p><p>大内核体系结构将操作系统的主要功能模块都作为一个紧密联系的整体运行在核心态，从而为用户提供高性能的系统服务。各管理模块之间共享信息，能有效利用相互之间的有效特性，有无可比拟的性能优势。</p><p>微内核体系结构将内核中最基本的功能保留在内核，将那些不需要在核心态执行的功能转移到用户态执行。分离了内核与服务，服务与服务，使他们之间的接口更加清晰，保证了操作系统的可靠性。微内核结构的最大问题是性能问题，因为需要频繁地在核心态和用户态之间切换。</p>]]></content>
       
       
       <categories>
           
           <category> 操作系统 </category>
-          
-          <category> 工程实践 </category>
           
       </categories>
       
@@ -35,12 +33,14 @@
       <link href="/archives/ecd6af03.html"/>
       <url>/archives/ecd6af03.html</url>
       
-        <content type="html"><![CDATA[<h1 id="1-操作系统的基本概念"><a href="#1-操作系统的基本概念" class="headerlink" title="1.操作系统的基本概念"></a>1.操作系统的基本概念</h1><h2 id="1-1操作系统概念"><a href="#1-1操作系统概念" class="headerlink" title="1.1操作系统概念"></a>1.1操作系统概念</h2><p>计算机系统自上而下可大致分为：硬件、操作系统、应用程序和用户。其中，<font color=red><strong>操作系统</strong></font>管理各种计算机硬件，为应用程序提供基础，并充当计算机硬件与用户之间的中介。</p><p>在计算机系统的运行过程中，操作系统提供了正确使用各种计算机资源的方法（如CPU、内存、IO设备等）。</p><p>综上，操作系统指控制和管理整个计算机系统的硬件与软件资源，合理地组织、调度计算机的工作与资源分配，进而为用户和其他软件提供方便接口与环境的程序集合，是计算机系统中最基本的<font color=red><strong>软件系统</strong></font>。</p><h2 id="1-2操作系统特征"><a href="#1-2操作系统特征" class="headerlink" title="1.2操作系统特征"></a>1.2操作系统特征</h2><p>操作系统的基本特征包括：并发、共享、虚拟和异步。</p><ol><li><p>并发</p><p>指两个或多个事件在同一<font color=red><strong>时间间隔</strong></font>内发生。操作系统的并发性是指计算机系统中存在多个运行的程序，因此它具有处理和调度多个程序同时执行的能力，且操作系统引入进程的目的是使程序并发执行。</p><p>而<font color=red><strong>并行</strong></font>是指两个或多个事件在同一<font color=red><strong>时刻</strong></font>发生。</p></li><li><p>共享</p><p>资源共享即为共享，指系统中的资源可供内存中的多个并发执行的进程共同使用，有两种方式：</p><ul><li><p>互斥共享方式</p><p>系统中的某些资源，虽然可供多个进程使用，但为了保证结果不混淆，应规定一段时间内只允许一个进程访问该资源，我们将这种共享称之为互斥共享方式，将在一段时间内只允许一个进程访问的资源称为<font color=red><strong>临界资源</strong></font>。</p></li><li><p>同时访问方式</p><p>有一类资源，它允许在一段时间内由多个进程“同时”访问。“同时”通常上是宏观的，而在微观上的形式可能是“分时共享”。</p></li></ul><p>并发和共享是操作系统两个最基本的特征，两者之间互为存在的条件：①资源共享的实现是以程序的并发为条件的，如果没有并发，自然也不存在资源共享问题。②若系统不能对资源进行有效的管理，则必将影响程序的并发执行，甚至根本无法执行。</p></li><li><p>虚拟</p><p>虚拟是将物理上的实体变为若干逻辑上的对应物，操作系统利用多种虚拟技术来实现虚拟处理器、虚拟内存和虚拟外部设备等。</p><p>虚拟技术科归纳为：时分复用技术、空分复用技术</p></li><li><p>异步</p><p>由于多道环境允许多个程序并发执行，但由于资源有限，进程的执行不是一贯到底的，而是走走停停，他以不可预知的速度向前推进，这就是进程的异步性</p></li></ol><h2 id="1-3操作系统目标和功能"><a href="#1-3操作系统目标和功能" class="headerlink" title="1.3操作系统目标和功能"></a>1.3操作系统目标和功能</h2><ul><li><p>作为系统资源的管理者</p><ol><li><p>处理机管理</p><p>处理机的运行和分配都以进程（或线程）为基本单位，因而对处理机的管理科归结为对进程的管理。进程管理的主要功能包括进程控制、进程同步、进程通信、死锁处理、处理机调度等。</p></li><li><p>文件管理</p><p>对文件存储空间进行管理、目录管理已经文件的读写管理和保护等。</p></li><li><p>设备管理</p><p>完成用户的I/O请求，方便用户使用设备，包括缓冲管理、设备分配、设备处理和虚拟设备等功能。</p></li></ol></li><li><p>作为用户与计算机之间的接口</p><p>主要为两类：命令接口与程序接口。</p><ol><li><p>命令接口</p><ul><li><p>联机命令接口</p><p>又称交互式命令接口，适用于分时或者实时系统的接口。用户输入指令，操作系统执行，完成后返回终端，此时可输入下一条指令。</p></li><li><p>脱机命令接口</p><p>又称批处理命令接口，适用于批处理系统，由一组作业控制命令组成，用户不能直接干预作业的运行，系统调度到该作业时，逐条执行作业上的语句，间接控制作业的运行。</p></li></ul><p>联机命令可理解为：“雇主”说一句话，“工人”做一件事，强调<font color=red><strong>交互性</strong></font>。</p><p>脱机命令可理解为：“雇主”列出任务清单，“工人”逐条完成清单上的任务，这就是<font color=red><strong>批处理</strong></font>。</p></li><li><p>程序接口</p><p>程序接口由一组系统调用命令组成，用户可使用这些命令来请求操作系统为其提供服务。</p></li></ol></li><li><p>作为扩充机器</p><p>通常将覆盖了软件的机器成为扩充机器或虚拟机。</p></li></ul><h1 id="2-操作系统的发展与分类"><a href="#2-操作系统的发展与分类" class="headerlink" title="2.操作系统的发展与分类"></a>2.操作系统的发展与分类</h1><h2 id="2-1手工操作阶段（此阶段无操作系统）"><a href="#2-1手工操作阶段（此阶段无操作系统）" class="headerlink" title="2.1手工操作阶段（此阶段无操作系统）"></a>2.1手工操作阶段（此阶段无操作系统）</h2><p>用户在计算机上的所有工作需要人工干预，人机矛盾大。</p><p>有两个突出缺点：①用户独占全机，不会出现资源被其他用户占用而等待的现象，但资源利用率低。②CPU等待手工操作，CPU利用不充分。</p><h2 id="2-2批处理阶段"><a href="#2-2批处理阶段" class="headerlink" title="2.2批处理阶段"></a>2.2批处理阶段</h2><ul><li><p>单道批处理系统</p><p>系统对作业的处理是成批进行的，但是内存中始终保持一道作业，主要特征如下：</p><ul><li>自动性：在顺利的情况下，磁带上的一批作业能自动逐个运行，无需人工干预。</li><li>顺序性：磁带上的各道作业顺序进入内存，即先调入内存的作业先完成。</li><li>单道性：内存中仅有一道程序运行，当程序完成或发生异常后，才换入其他的后继程序。</li></ul><p>缺点：资源的利用率低，吞吐量小。</p></li><li><p>多道批处理系统</p><p>多道程序设计技术允许多个程序同时进入内存，使他们在CPU中交替允许，共享系统中的资源，特点是多道、宏观上并行、微观上串行，优点：资源利用率高，系统吞吐量大。缺点：用户相应时间较长，不提供人机交互能力。</p><ul><li>多道：计算机内存中存放多道相互独立的程序。</li><li>宏观上并行：同时进入系统的多道程序都处于运行过程中。</li><li>微观上串行：内存中的多道程序轮流占用CPU，交替执行。</li></ul></li></ul><h2 id="2-3分时操作系统"><a href="#2-3分时操作系统" class="headerlink" title="2.3分时操作系统"></a>2.3分时操作系统</h2><p>所谓分时，是指把处理器的运行时间分成很短的时间片，按实际片轮流把处理器分配给各联机作业使用，主要特征如下：</p><ul><li>同时性：也称多路性，指允许多个终端用户同时使用一台计算机。</li><li>交互性：用户能方便地与系统进行人机对话。</li><li>独立性：系统中的多个用户可以彼此独立地进行操作，互不干扰。</li><li>及时性：用户请求能在很短的时间内获得响应。</li></ul><p>虽然分时操作系统比较好的解决了人机交互问题，但在一些应用场合，需要系统在规定时间内做出处理（飞机订票或导弹制导），因此产生了实时系统。</p><h2 id="2-4实时操作系统"><a href="#2-4实时操作系统" class="headerlink" title="2.4实时操作系统"></a>2.4实时操作系统</h2><p>为了能在某个时间限制内完成某些紧急任务而不需要时间片排队，诞生了实时操作系统。可分为两种情况：</p><ul><li>硬实时操作系统：某个动作必须绝对地在规定的时刻或时间范围发生。</li><li>软实时操作系统：能够接受偶尔违反时间规定且不会引起任何永久性的损害。</li></ul><h2 id="2-5网络操作系统和分布式计算机系统"><a href="#2-5网络操作系统和分布式计算机系统" class="headerlink" title="2.5网络操作系统和分布式计算机系统"></a>2.5网络操作系统和分布式计算机系统</h2><ul><li><p>网络操作系统：</p><p>把计算机网络中各台计算机有机结合起来，实现各台计算机之间数据的互相传送。最主要的特点是网络中各种资源的共享及各台计算机之间的通信。</p></li><li><p>分布式计算机系统：</p><p>由多台计算机组成并满足下列条件的系统：</p><p>①系统中任意两台计算机通过通信方式交换信息。</p><p>②系统中的每台计算机都具有同等的地位。</p><p>③每台计算机的资源为所有用户共享。</p><p>④系统中的任意台计算机都可以构成一个子系统，且能重构。</p><p>⑤任何工作都可以分布在几台计算机上，并由他们并行工作，协同完成。</p><p>该系统的主要特点是<font color=red><strong>分布性和并行性</strong></font>。</p></li></ul><h2 id="2-6个人计算机操作系统"><a href="#2-6个人计算机操作系统" class="headerlink" title="2.6个人计算机操作系统"></a>2.6个人计算机操作系统</h2><p>目前使用最广泛的操作系统，常见的有Windows、Linux和Macintosh等。</p><h1 id="3-操作系统的运行环境"><a href="#3-操作系统的运行环境" class="headerlink" title="3.操作系统的运行环境"></a>3.操作系统的运行环境</h1><h2 id="3-1操作系统的运行机制"><a href="#3-1操作系统的运行机制" class="headerlink" title="3.1操作系统的运行机制"></a>3.1操作系统的运行机制</h2><p>计算机系统中，CPU执行两种不同性质的程序：操作系统内核程序和用户自编程序。对操作系统而言，前者是后者的管理者，因此，“管理程序”要执行一些<font color=red><strong>特权指令</strong></font>。所谓特权指令，指计算机中不允许用户直接使用的指令。在具体实现上，将CPU的状态划分为用户态和核心态。用户自编程序运行在用户态，操作系统内核程序运行在核心态。大多数操作系统的内核包括四方面内容：</p><ol><li><p>时钟管理</p><p>在计算机的各部件中，时钟是最关键的设备。主要功能：</p><ul><li>计时，操作系统通过时钟管理，向用户提供标准的系统时间。</li><li>通过时间中断的管理，实现进程的切换。</li></ul></li><li><p>中断机制</p><p>引入中断的初衷是提高多道程序运行环境中CPU的利用率，而且主要针对外部设备，后面逐步发展为操作系统中各项操作的基础。</p><p>中断机制中，只有一小部分功能属于内核，负责保护和恢复中断现场的信息，转移控制权到相关的处理程序。可以减少中断的处理时间，提高系统的并行处理能力。</p></li><li><p>原语</p><p>可被调用的公用小程序，各自完成一个规定的操作，特点如下：</p><ul><li>处于操作系统最底层，最接近硬件的部分。</li><li>具有原子性，操作只能一气呵成。</li><li>运行时间短，调用频繁</li></ul><p>定义原语的直接方法是关闭中断，让其所有动作不可分割地完成后再打开中断。</p><p>系统中的设备驱动、CPU切换、进程通信等功能中部分操作都可以定义为原语，使他们成为内核的组成部分。</p></li><li><p>系统控制的数据结构及处理</p><p>系统中用来登记状态信息的数据结构很多，如作业控制块、进程控制块、设备控制块等，为了实现有效的管理，需要做一些基本的操作，常见操作有以下三种：</p><ol><li>进程管理：进程状态管理、进程调度和分配、创建与撤销进程控制块等。</li><li>存储器管理：存储器空间的分配和回收、内存信息保护程序、代码对换程序等。</li><li>设备管理：缓冲区管理、设备分配和回收等。</li></ol></li></ol><h2 id="3-2中断和异常的概念"><a href="#3-2中断和异常的概念" class="headerlink" title="3.2中断和异常的概念"></a>3.2中断和异常的概念</h2><p>发生中断和异常时，运行用户态的CPU会立即进入核心态，这是通过硬件实现的。</p><p>中断：也称外中断，指来自CPU执行指令以外的事件发生。</p><p>异常：也称内中断，指源自CPU执行指令内部的事件。</p><h2 id="3-3系统调用"><a href="#3-3系统调用" class="headerlink" title="3.3系统调用"></a>3.3系统调用</h2><p>指用户在程序中调用操作系统的一些子功能，这些功能大致可分为：设备管理、文件管理、进程控制、进程通信和内存管理。</p><h1 id="4-操作系统的体系结构"><a href="#4-操作系统的体系结构" class="headerlink" title="4.操作系统的体系结构"></a>4.操作系统的体系结构</h1><p>操作系统有两种主要的体系结构：大内核和微内核。</p><p>大内核体系结构将操作系统的主要功能模块都作为一个紧密联系的整体运行在核心态，从而为用户提供高性能的系统服务。各管理模块之间共享信息，能有效利用相互之间的有效特性，有无可比拟的性能优势。</p><p>微内核体系结构将内核中最基本的功能保留在内核，将那些不需要在核心态执行的功能转移到用户态执行。分离了内核与服务，服务与服务，使他们之间的接口更加清晰，保证了操作系统的可靠性。微内核结构的最大问题是性能问题，因为需要频繁地在核心态和用户态之间切换。</p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
       
       <categories>
           
           <category> 操作系统 </category>
+          
+          <category> 工程实践 </category>
           
       </categories>
       
@@ -87,29 +87,25 @@
     
     
     <entry>
-      <title>算法分析——分治策略</title>
-      <link href="/archives/2679d5f4.html"/>
-      <url>/archives/2679d5f4.html</url>
+      <title>数据库之绪论</title>
+      <link href="/archives/b6d4b493.html"/>
+      <url>/archives/b6d4b493.html</url>
       
-        <content type="html"><![CDATA[<h1 id="1-分治策略的基本思想"><a href="#1-分治策略的基本思想" class="headerlink" title="1.分治策略的基本思想"></a>1.分治策略的基本思想</h1><ol><li>将原始问题划分，使其归结为规模较小的子问题</li><li>递归或迭代求解每个子问题</li><li>将子问题的解综合得到原问题的解</li></ol><p><font color=red>注意：</font></p><ol><li>子问题与原始问题性质完全一样</li><li>子问题之间可彼此独立求解</li><li>递归停止时子问题可直接求解</li></ol><h1 id="2-分治算法的引入"><a href="#2-分治算法的引入" class="headerlink" title="2.分治算法的引入"></a>2.分治算法的引入</h1><h2 id="2-1-二分检索"><a href="#2-1-二分检索" class="headerlink" title="2.1.二分检索"></a>2.1.二分检索</h2><h3 id="2-1-1-二分检索的代码实现"><a href="#2-1-1-二分检索的代码实现" class="headerlink" title="2.1.1.二分检索的代码实现"></a>2.1.1.二分检索的代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Binary_Search</span><span class="params">(SeqList L,ElemType key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>,high = L.TableLen - <span class="number">1</span>,mid;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">        mid = (low + high)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(L.elem[mid]==key)</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(L.elem[mid]&gt;key)</span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> low = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>通过和中间元素的比较，不断将问题归结为规模减半的子问题。</p><h3 id="2-1-2-二分检索的时间复杂度分析"><a href="#2-1-2-二分检索的时间复杂度分析" class="headerlink" title="2.1.2.二分检索的时间复杂度分析"></a>2.1.2.二分检索的时间复杂度分析</h3><p>递推方程：<em>W(n) = w(n/2) + 1</em></p><p>​                  <em>W(1) = 1</em></p><p>解得 <em>W(n) = logn + 1</em></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="1-数据库的四个基本概念"><a href="#1-数据库的四个基本概念" class="headerlink" title="1.数据库的四个基本概念"></a>1.数据库的四个基本概念</h1><ul><li>数据：荷载信息的物理符号。</li><li>数据库（DB）：长期储存在计算机中、有组织、可共享的大量数据的集合。</li><li>数据库管理系统（DBMS）：对共享数据进行有效的组织、存储、管理、存取的系统软件。主要功能如下：<ol><li>数据定义功能</li><li>数据组织、存储和管理</li><li>数据操纵功能</li><li>数据库的事务管理和运行管理</li><li>数据库的建立和维护功能</li><li>其他功能，如不同数据库之间互访和互相操作功能等</li></ol></li><li>数据库系统（DBS）：由数据库、数据库管理系统、应用程序和数据库管理员（DBA）组成的存储、管理、处理和维护数据的系统。使用数据库系统的好处：提高开发效率、较高的独立性、减轻维护负担。其主要特点如下：<ol><li>数据结构化</li><li>数据的共享性高、冗余度低，易扩充</li><li>数据的独立性高：包括了数据的物理独立性和逻辑独立性</li><li>数据又DBMS统一管理和控制</li></ol></li></ul><h1 id="2-数据库发展阶段"><a href="#2-数据库发展阶段" class="headerlink" title="2.数据库发展阶段"></a>2.数据库发展阶段</h1><ol><li>人工管理阶段：数据不保存、不共享，不具有独立性。</li><li>文件系统阶段：可保存，但共享性差，冗余度大，独立性差。</li><li>数据库管理系统阶段：数据库系统的出现使信息系统从以加工数据的程序为中心转向围绕共享的数据库为中心的新阶段。</li></ol><p>文件系统和数据库系统的区别和联系：</p><ul><li>区别：<ol><li>文件系统的数据是面向某一应用的，文件的共享性差，冗余度高，独立性差。</li><li>数据库管理系统的数据是面向整个组织或企业。数据的共享性高，冗余度低，具有较高的物理独立性和逻辑独立性。</li></ol></li><li>联系：<ol><li>两者都为计算机系统中管理数据的软件。</li><li>数据库中数据的组织和存储都是通过操作系统中的文件系统来实现的，数据库实现的基础是文件，对数据库的任何操作最终都要转化为对文件的操作。</li></ol></li></ul>]]></content>
       
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 数据库 </category>
           
           <category> 学习 </category>
-          
-          <category> 分治策略 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 算法 </tag>
-            
-            <tag> 分治 </tag>
+            <tag> 数据库 </tag>
             
         </tags>
       
@@ -118,18 +114,18 @@
     
     
     <entry>
-      <title>算法分析——动态规划</title>
-      <link href="/archives/e1d9d957.html"/>
-      <url>/archives/e1d9d957.html</url>
+      <title>动态规划--单词拆分</title>
+      <link href="/archives/7a8d0124.html"/>
+      <url>/archives/7a8d0124.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h1><p>给定一个字符串s和一个字符串列表dict，判断是否可用dict拼出s，其中dict中的字符可重复使用</p><h1 id="2-问题分析"><a href="#2-问题分析" class="headerlink" title="2.问题分析"></a>2.问题分析</h1><p>初始值：</p><p>定义dp[0] = true表示空串合法</p><p>状态转移方程：</p><p>字符串s[0…i-1]，我们从中选取切割点j，看s[0..j-1]和s[j..i-1]是否均合法，如果两个字符串均合法，则该字符串合法，由此可得出如下转移方程：</p><p>dp[i] = dp[j] &amp;&amp; check(s[j..i-1])</p><p>check(s[j..i-1])表示子串s[j..i-1]是否出现在字典中</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">wordBreak</span><span class="params">(string s, vector&lt;string&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> wordDictSet = unordered_set &lt;string&gt; ();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> word: wordDict) &#123;</span><br><span class="line">        wordDictSet.<span class="built_in">insert</span>(word);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> dp = vector &lt;<span class="keyword">bool</span>&gt; (s.<span class="built_in">size</span>() + <span class="number">1</span>);</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (dp[j] &amp;&amp; wordDictSet.<span class="built_in">find</span>(s.<span class="built_in">substr</span>(j, i - j)) != wordDictSet.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                dp[i] = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[s.<span class="built_in">size</span>()];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度分析"><a href="#4-复杂度分析" class="headerlink" title="4.复杂度分析"></a>4.复杂度分析</h1><p>时间复杂度：O(n²)</p><p>n为字符串s的长度，我们一共有O(n)个状态要算，每次计算要枚举O(n)个分割点。</p><p>空间复杂度：O(n)</p>]]></content>
       
       
       <categories>
           
           <category> 算法 </category>
           
-          <category> 学习 </category>
+          <category> 实例 </category>
           
           <category> 动态规划 </category>
           
@@ -141,6 +137,68 @@
             <tag> 算法 </tag>
             
             <tag> 动态规划 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>动态规划--不同路径</title>
+      <link href="/archives/634ae221.html"/>
+      <url>/archives/634ae221.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h1><p>一个机器人从一个m*n网格左上角向右下角移动，每次只能向下或向右移动，有多少种解法？</p><h1 id="2-问题分析"><a href="#2-问题分析" class="headerlink" title="2.问题分析"></a>2.问题分析</h1><p>初始值：</p><p>在边界上的dp每次只能走一步，即初始值均为1</p><p>dp[0] [i]和dp[j] [0]初始化均为1。</p><p>状态转移方程：</p><p>机器人到达一个点，只能由左边或者上边到达，故到达(i,j)点的走法为左边与上面走法之和，由此可得：</p><p>dp[i] [j] = dp[i-1] [j] + dp[i] [j-1] ;</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m,<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dp[m][n];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)</span><br><span class="line">        dp[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">        dp[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; m;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt; n;j++)</span><br><span class="line">            dp[i][j] = dp[i<span class="number">-1</span>][j] + dp[i][j<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">return</span> dp[m<span class="number">-1</span>][n<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度分析"><a href="#4-复杂度分析" class="headerlink" title="4.复杂度分析"></a>4.复杂度分析</h1><p>时间复杂度：O(mn)</p><p>空间复杂度：O(mn)</p><h1 id="5-优化方案"><a href="#5-优化方案" class="headerlink" title="5.优化方案"></a>5.优化方案</h1><p>画出相应dp表格，我们可以发现dp[i] [j] 仅与第i行和第i-1行有关。由此可以得出新的状态转移方程：</p><p>dp[i] = dp[i-1] + dp[i]</p><p>且由于交换m和n不会对答案产生影响，因此时间复杂度为O(min(m,n))</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 实例 </category>
+          
+          <category> 动态规划 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 动态规划 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>回溯法--全排列</title>
+      <link href="/archives/65ec2420.html"/>
+      <url>/archives/65ec2420.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h1><p>给定不含重复数字的数组nums，返回其所有可能的全排列。</p><h1 id="2-问题分析"><a href="#2-问题分析" class="headerlink" title="2.问题分析"></a>2.问题分析</h1><p>存放容器：</p><p>定义一个单层vector用来存放一次的结果:</p><p>vector<int> track</p><p>定义一个双层vector用来存放结果：</p><p>vector&lt;vector<int>&gt; res;</p><p>递归设计：</p><p>结束标志:</p><p>tarck.size() == nums.size()</p><p>合法判断：</p><p>used[i]是否为true，为true则已被选取，跳过</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; track;</span><br><span class="line"></span><br><span class="line">vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">permute</span>(<span class="keyword">int</span> nums[])&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">bool</span> used[n] = <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">backtrack</span>(nums,track,used);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> nums[],vector&lt;<span class="keyword">int</span>&gt; track,<span class="keyword">bool</span> used[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(track.<span class="built_in">size</span>() == nums.<span class="built_in">size</span>())&#123;</span><br><span class="line">        res.<span class="built_in">push_back</span>(track);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; nums.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(used[i])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        track.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">        used[i] = <span class="literal">true</span>;</span><br><span class="line">        <span class="built_in">backtrack</span>(nums,track,used);</span><br><span class="line">        track.<span class="built_in">pop_back</span>();</span><br><span class="line">        used[i] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度分析"><a href="#4-复杂度分析" class="headerlink" title="4.复杂度分析"></a>4.复杂度分析</h1><p>时间复杂度：O(n*n!)</p><p>空间复杂度：O(n)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 实例 </category>
+          
+          <category> 回溯法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 回溯法 </tag>
             
         </tags>
       
