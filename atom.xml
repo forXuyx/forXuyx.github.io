@@ -38,27 +38,6 @@
   </entry>
   
   <entry>
-    <title>操作系统--计算机系统概述</title>
-    <link href="http://forxuyx.github.io/archives/ecd6af03.html"/>
-    <id>http://forxuyx.github.io/archives/ecd6af03.html</id>
-    <published>2022-02-26T13:04:23.000Z</published>
-    <updated>2022-03-16T11:30:39.608Z</updated>
-    
-    
-    <summary type="html">操作系统第一章计算机系统概述</summary>
-    
-    
-    
-    <category term="操作系统" scheme="http://forxuyx.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    <category term="工程实践" scheme="http://forxuyx.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/"/>
-    
-    
-    <category term="操作系统" scheme="http://forxuyx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>ARIMA模型原理剖析</title>
     <link href="http://forxuyx.github.io/archives/ff120eab.html"/>
     <id>http://forxuyx.github.io/archives/ff120eab.html</id>
@@ -109,11 +88,119 @@
   </entry>
   
   <entry>
+    <title>分治法--最大子段和</title>
+    <link href="http://forxuyx.github.io/archives/840c4545.html"/>
+    <id>http://forxuyx.github.io/archives/840c4545.html</id>
+    <published>2021-01-26T05:22:45.000Z</published>
+    <updated>2022-03-21T17:08:20.529Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>给定一个含n个数字的数组，返回其中子数字串的最大和，如果全为负数，则返回0</p><h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>1.递归出口：</p><p>当仅有一个数字时，直接求解</p><p>2.递归求解左边的最大子串leftsum和右边的最大子串rightsum</p><p>3.从中间结点分开搜索两个最大子串s1和s2，将其加和与leftsum和rightsum比较，得到最大和</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSum</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(left == right)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[left] &gt; <span class="number">0</span>) sum = a[left];</span><br><span class="line">        <span class="keyword">else</span> sum = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> center = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> leftsum = <span class="built_in">MaxSum</span>(a,left,center);</span><br><span class="line">        <span class="keyword">int</span> rightsum = <span class="built_in">MaxSum</span>(a,center,right);</span><br><span class="line">        <span class="keyword">int</span> s1 = <span class="number">0</span>,lefts = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = center;i &gt;= left;i--)&#123;</span><br><span class="line">            lefts += a[i];</span><br><span class="line">            s1 = <span class="built_in">max</span>(lefts,s1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> s2 = <span class="number">0</span>,rights = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = center+<span class="number">1</span>;i &lt;=right;i++)&#123;</span><br><span class="line">            rights += a[i];</span><br><span class="line">            s2 = <span class="built_in">max</span>(rights,s2);</span><br><span class="line">        &#125;</span><br><span class="line">        sum = <span class="built_in">max</span>(s1+s2,<span class="built_in">max</span>(leftsum,rightsum));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度"><a href="#4-复杂度" class="headerlink" title="4.复杂度"></a>4.复杂度</h1><p>时间复杂度：</p><p>当n = 1时，时间复杂度为O(1)</p><p>当n &gt; 1时，T(n) = 2T(n/2) + O(n)</p><p>由主定理可得，时间复杂度为O(nlogn)</p><p>空间复杂度：</p><p>O(1)</p>]]></content>
+    
+    
+    <summary type="html">分治法实例</summary>
+    
+    
+    
+    <category term="算法" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="实例" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AE%9E%E4%BE%8B/"/>
+    
+    <category term="分治法" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AE%9E%E4%BE%8B/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://forxuyx.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="分治法" scheme="http://forxuyx.github.io/tags/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分治法--棋盘覆盖</title>
+    <link href="http://forxuyx.github.io/archives/7a58f053.html"/>
+    <id>http://forxuyx.github.io/archives/7a58f053.html</id>
+    <published>2021-01-17T08:42:32.000Z</published>
+    <updated>2022-03-21T17:24:43.034Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>给定一个2k*2k的棋盘，其中有一个格子被占用，要求用四个不同方向的三角骨牌进行覆盖</p><h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>1.将棋盘等分为4个区域</p><p>2.棋盘划分为1的时候，表面该点为已占用点（递归出口）</p><p>3.以4*4的棋盘为例，当占用在左上角棋盘的右下时，只需要将其左边，下方，右下方用一个骨牌填充即可，其他方向棋盘同理</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">//骨牌编号</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ChessBoard</span><span class="params">(<span class="keyword">int</span> tr,<span class="keyword">int</span> tc,<span class="keyword">int</span> dr,<span class="keyword">int</span> dc,<span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(size == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> s = size / <span class="number">2</span>;</span><br><span class="line">    t++;</span><br><span class="line">    <span class="comment">//左上角</span></span><br><span class="line">    <span class="keyword">if</span>(dr &lt; tr + s &amp;&amp; dc &lt; tc + s)</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr,tc,dr,dc,s);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        board[tr+s<span class="number">-1</span>][tc+s<span class="number">-1</span>] = t;</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr,tc,tr+s<span class="number">-1</span>,tc+s<span class="number">-1</span>,s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//右上角</span></span><br><span class="line">    <span class="keyword">if</span>(dr &lt; tr + s &amp;&amp; dc &gt;= tc + s)</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr,tc+s,dr,dc,s);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        board[tr+s<span class="number">-1</span>][tc+s] = t;</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr,tc+s,tr+s<span class="number">-1</span>,tc+s,s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//左下角</span></span><br><span class="line">        <span class="keyword">if</span>(dr &gt;= tr + s &amp;&amp; dc &lt; tc + s)</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr+s,tc,dr,dc,s);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        board[tr+s][tc+s<span class="number">-1</span>] = t;</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr+s,tc,tr+s,tc+s<span class="number">-1</span>,s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//右下角</span></span><br><span class="line">        <span class="keyword">if</span>(dr &gt;= tr + s &amp;&amp; dc &gt;= tc + s)</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr+s,tc+s,dr,dc,s);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        board[tr+s][tc+s] = t;</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr+s,tc+s,tr+s,tc+s,s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度"><a href="#4-复杂度" class="headerlink" title="4.复杂度"></a>4.复杂度</h1><p>时间复杂度：</p><p>当n=1时，T(n) = 1;</p><p>当n&gt;1时，T(n) = 4T(n/2) + O(1)</p><p>由主定理可得T(n)为O(n²)</p><p>又因为n = 2^k</p><p>解得T(k) = 4^k</p><p>空间复杂度：</p><p>O(1)</p>]]></content>
+    
+    
+    <summary type="html">分治法实例</summary>
+    
+    
+    
+    <category term="算法" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="实例" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AE%9E%E4%BE%8B/"/>
+    
+    <category term="分治法" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AE%9E%E4%BE%8B/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://forxuyx.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="分治法" scheme="http://forxuyx.github.io/tags/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分治法--求sqrt(2)</title>
+    <link href="http://forxuyx.github.io/archives/a479b42c.html"/>
+    <id>http://forxuyx.github.io/archives/a479b42c.html</id>
+    <published>2021-01-15T02:42:32.000Z</published>
+    <updated>2022-03-20T06:45:36.229Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>已知sqrt(2)约等于1.414，求sqrt(2)精确到小数点后10位</p><h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>1.已知sqrt(2)的范围，可设定区间(1.4,1.5)</p><p>2.二分区间，分割点mid=(left + right) / 2,如果mid*mid &gt; 2，则mid = right，否则mid = left</p><p>3.定义参数exp = 0.0000000001，当right - left &lt;= exp时调出循环</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> exp = <span class="number">0.0000000001</span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">sqrt2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> left = <span class="number">1.4</span>,right = <span class="number">1.5</span>;</span><br><span class="line">    <span class="keyword">double</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span>((right - left) &gt; exp)&#123;</span><br><span class="line">        <span class="keyword">if</span>(mid * mid &gt; <span class="number">2</span>)</span><br><span class="line">            right = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            low = mid;</span><br><span class="line">        mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度"><a href="#4-复杂度" class="headerlink" title="4.复杂度"></a>4.复杂度</h1><p>时间复杂度：</p><p>O(logn)：其实质就为二分查找</p><p>空间复杂度：</p><p>O(1)</p>]]></content>
+    
+    
+    <summary type="html">分治法实例</summary>
+    
+    
+    
+    <category term="算法" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="实例" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AE%9E%E4%BE%8B/"/>
+    
+    <category term="分治法" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AE%9E%E4%BE%8B/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://forxuyx.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="分治法" scheme="http://forxuyx.github.io/tags/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分治法--汉诺塔</title>
+    <link href="http://forxuyx.github.io/archives/7ea573da.html"/>
+    <id>http://forxuyx.github.io/archives/7ea573da.html</id>
+    <published>2021-01-15T02:42:32.000Z</published>
+    <updated>2022-03-21T07:24:26.126Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>给定3个柱子以及N个圆盘，一开始，所有盘子自上而下按升序依次套在第一根柱子上(即每一个盘子只能放在更大的盘子上面)。移动圆盘时受到以下限制:<br>(1) 每次只能移动一个盘子;<br>(2) 盘子只能从柱子顶端滑出移到下一根柱子;<br>(3) 盘子只能叠在比它大的盘子上。</p><p>请编写程序，用栈将所有盘子从第一根柱子移到最后一根柱子。</p><h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>1.当n=1，即仅有一个圆盘时：</p><p>我们仅需将盘从A柱移动到C柱</p><p>2.当盘子数大于1时，有如下步骤：</p><ul><li>将A柱上的n-1个盘子移动到B柱</li><li>A柱上最大的盘子移动到C柱</li><li>将B柱上n-1个盘子移动到C柱</li></ul><p>由此思路，代码可解。</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hanota</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; A,vector&lt;<span class="keyword">int</span>&gt;&amp; B,vector&lt;<span class="keyword">int</span>&gt;&amp; C)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = A.<span class="built_in">size</span>();</span><br><span class="line">    <span class="built_in">move</span>(n,A,B,C);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> move)(<span class="keyword">int</span> n,vector&lt;<span class="keyword">int</span>&gt;&amp; A,vector&lt;<span class="keyword">int</span>&gt;&amp; B,vector&lt;<span class="keyword">int</span>&gt;&amp; C)&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">        C.<span class="built_in">push_back</span>(A.<span class="built_in">bcak</span>());</span><br><span class="line">        A.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">move</span>(n<span class="number">-1</span>,A,C,B);</span><br><span class="line">    C.<span class="built_in">push_back</span>(A.<span class="built_in">back</span>());</span><br><span class="line">    A.<span class="built_in">pop_back</span>();</span><br><span class="line">    <span class="built_in">move</span>(n<span class="number">-1</span>,B,A,C);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度"><a href="#4-复杂度" class="headerlink" title="4.复杂度"></a>4.复杂度</h1><p>时间复杂度：</p><p>当n=1时，T(n) = 1;</p><p>当n&gt;1时，T(n) = 2T(n-1) + O(1)</p><p>递推得到T(n)  = O(2^n)</p><p>空间复杂度：</p><p>O(1)</p>]]></content>
+    
+    
+    <summary type="html">分治法实例</summary>
+    
+    
+    
+    <category term="算法" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="实例" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AE%9E%E4%BE%8B/"/>
+    
+    <category term="分治法" scheme="http://forxuyx.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AE%9E%E4%BE%8B/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://forxuyx.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="分治法" scheme="http://forxuyx.github.io/tags/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>动态规划--单词拆分</title>
     <link href="http://forxuyx.github.io/archives/7a8d0124.html"/>
     <id>http://forxuyx.github.io/archives/7a8d0124.html</id>
     <published>2021-01-15T02:42:32.000Z</published>
-    <updated>2022-03-19T16:32:49.076Z</updated>
+    <updated>2022-03-19T16:33:49.641Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h1><p>给定一个字符串s和一个字符串列表dict，判断是否可用dict拼出s，其中dict中的字符可重复使用</p><h1 id="2-问题分析"><a href="#2-问题分析" class="headerlink" title="2.问题分析"></a>2.问题分析</h1><p>初始值：</p><p>定义dp[0] = true表示空串合法</p><p>状态转移方程：</p><p>字符串s[0…i-1]，我们从中选取切割点j，看s[0..j-1]和s[j..i-1]是否均合法，如果两个字符串均合法，则该字符串合法，由此可得出如下转移方程：</p><p>dp[i] = dp[j] &amp;&amp; check(s[j..i-1])</p><p>check(s[j..i-1])表示子串s[j..i-1]是否出现在字典中</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">wordBreak</span><span class="params">(string s, vector&lt;string&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> wordDictSet = unordered_set &lt;string&gt; ();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> word: wordDict) &#123;</span><br><span class="line">        wordDictSet.<span class="built_in">insert</span>(word);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> dp = vector &lt;<span class="keyword">bool</span>&gt; (s.<span class="built_in">size</span>() + <span class="number">1</span>);</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= s.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (dp[j] &amp;&amp; wordDictSet.<span class="built_in">find</span>(s.<span class="built_in">substr</span>(j, i - j)) != wordDictSet.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                dp[i] = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[s.<span class="built_in">size</span>()];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度分析"><a href="#4-复杂度分析" class="headerlink" title="4.复杂度分析"></a>4.复杂度分析</h1><p>时间复杂度：O(n²)</p><p>n为字符串s的长度，我们一共有O(n)个状态要算，每次计算要枚举O(n)个分割点。</p><p>空间复杂度：O(n)</p>]]></content>
     
@@ -140,7 +227,7 @@
     <link href="http://forxuyx.github.io/archives/634ae221.html"/>
     <id>http://forxuyx.github.io/archives/634ae221.html</id>
     <published>2021-01-04T02:42:32.000Z</published>
-    <updated>2022-03-19T15:56:42.696Z</updated>
+    <updated>2022-03-19T16:33:49.638Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h1><p>一个机器人从一个m*n网格左上角向右下角移动，每次只能向下或向右移动，有多少种解法？</p><h1 id="2-问题分析"><a href="#2-问题分析" class="headerlink" title="2.问题分析"></a>2.问题分析</h1><p>初始值：</p><p>在边界上的dp每次只能走一步，即初始值均为1</p><p>dp[0] [i]和dp[j] [0]初始化均为1。</p><p>状态转移方程：</p><p>机器人到达一个点，只能由左边或者上边到达，故到达(i,j)点的走法为左边与上面走法之和，由此可得：</p><p>dp[i] [j] = dp[i-1] [j] + dp[i] [j-1] ;</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m,<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dp[m][n];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)</span><br><span class="line">        dp[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">        dp[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; m;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt; n;j++)</span><br><span class="line">            dp[i][j] = dp[i<span class="number">-1</span>][j] + dp[i][j<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">return</span> dp[m<span class="number">-1</span>][n<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度分析"><a href="#4-复杂度分析" class="headerlink" title="4.复杂度分析"></a>4.复杂度分析</h1><p>时间复杂度：O(mn)</p><p>空间复杂度：O(mn)</p><h1 id="5-优化方案"><a href="#5-优化方案" class="headerlink" title="5.优化方案"></a>5.优化方案</h1><p>画出相应dp表格，我们可以发现dp[i] [j] 仅与第i行和第i-1行有关。由此可以得出新的状态转移方程：</p><p>dp[i] = dp[i-1] + dp[i]</p><p>且由于交换m和n不会对答案产生影响，因此时间复杂度为O(min(m,n))</p>]]></content>
     
@@ -167,7 +254,7 @@
     <link href="http://forxuyx.github.io/archives/65ec2420.html"/>
     <id>http://forxuyx.github.io/archives/65ec2420.html</id>
     <published>2021-01-04T02:42:32.000Z</published>
-    <updated>2022-03-19T15:51:13.737Z</updated>
+    <updated>2022-03-19T16:33:49.643Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h1><p>给定不含重复数字的数组nums，返回其所有可能的全排列。</p><h1 id="2-问题分析"><a href="#2-问题分析" class="headerlink" title="2.问题分析"></a>2.问题分析</h1><p>存放容器：</p><p>定义一个单层vector用来存放一次的结果:</p><p>vector<int> track</p><p>定义一个双层vector用来存放结果：</p><p>vector&lt;vector<int>&gt; res;</p><p>递归设计：</p><p>结束标志:</p><p>tarck.size() == nums.size()</p><p>合法判断：</p><p>used[i]是否为true，为true则已被选取，跳过</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; track;</span><br><span class="line"></span><br><span class="line">vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">permute</span>(<span class="keyword">int</span> nums[])&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">bool</span> used[n] = <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">backtrack</span>(nums,track,used);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> nums[],vector&lt;<span class="keyword">int</span>&gt; track,<span class="keyword">bool</span> used[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(track.<span class="built_in">size</span>() == nums.<span class="built_in">size</span>())&#123;</span><br><span class="line">        res.<span class="built_in">push_back</span>(track);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; nums.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(used[i])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        track.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">        used[i] = <span class="literal">true</span>;</span><br><span class="line">        <span class="built_in">backtrack</span>(nums,track,used);</span><br><span class="line">        track.<span class="built_in">pop_back</span>();</span><br><span class="line">        used[i] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度分析"><a href="#4-复杂度分析" class="headerlink" title="4.复杂度分析"></a>4.复杂度分析</h1><p>时间复杂度：O(n*n!)</p><p>空间复杂度：O(n)</p>]]></content>
     

@@ -29,33 +29,6 @@
     
     
     <entry>
-      <title>操作系统--计算机系统概述</title>
-      <link href="/archives/ecd6af03.html"/>
-      <url>/archives/ecd6af03.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> 操作系统 </category>
-          
-          <category> 工程实践 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 操作系统 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>ARIMA模型原理剖析</title>
       <link href="/archives/ff120eab.html"/>
       <url>/archives/ff120eab.html</url>
@@ -106,6 +79,130 @@
         <tags>
             
             <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>分治法--最大子段和</title>
+      <link href="/archives/840c4545.html"/>
+      <url>/archives/840c4545.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>给定一个含n个数字的数组，返回其中子数字串的最大和，如果全为负数，则返回0</p><h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>1.递归出口：</p><p>当仅有一个数字时，直接求解</p><p>2.递归求解左边的最大子串leftsum和右边的最大子串rightsum</p><p>3.从中间结点分开搜索两个最大子串s1和s2，将其加和与leftsum和rightsum比较，得到最大和</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSum</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(left == right)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[left] &gt; <span class="number">0</span>) sum = a[left];</span><br><span class="line">        <span class="keyword">else</span> sum = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> center = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> leftsum = <span class="built_in">MaxSum</span>(a,left,center);</span><br><span class="line">        <span class="keyword">int</span> rightsum = <span class="built_in">MaxSum</span>(a,center,right);</span><br><span class="line">        <span class="keyword">int</span> s1 = <span class="number">0</span>,lefts = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = center;i &gt;= left;i--)&#123;</span><br><span class="line">            lefts += a[i];</span><br><span class="line">            s1 = <span class="built_in">max</span>(lefts,s1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> s2 = <span class="number">0</span>,rights = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = center+<span class="number">1</span>;i &lt;=right;i++)&#123;</span><br><span class="line">            rights += a[i];</span><br><span class="line">            s2 = <span class="built_in">max</span>(rights,s2);</span><br><span class="line">        &#125;</span><br><span class="line">        sum = <span class="built_in">max</span>(s1+s2,<span class="built_in">max</span>(leftsum,rightsum));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度"><a href="#4-复杂度" class="headerlink" title="4.复杂度"></a>4.复杂度</h1><p>时间复杂度：</p><p>当n = 1时，时间复杂度为O(1)</p><p>当n &gt; 1时，T(n) = 2T(n/2) + O(n)</p><p>由主定理可得，时间复杂度为O(nlogn)</p><p>空间复杂度：</p><p>O(1)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 实例 </category>
+          
+          <category> 分治法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 分治法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>分治法--棋盘覆盖</title>
+      <link href="/archives/7a58f053.html"/>
+      <url>/archives/7a58f053.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>给定一个2k*2k的棋盘，其中有一个格子被占用，要求用四个不同方向的三角骨牌进行覆盖</p><h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>1.将棋盘等分为4个区域</p><p>2.棋盘划分为1的时候，表面该点为已占用点（递归出口）</p><p>3.以4*4的棋盘为例，当占用在左上角棋盘的右下时，只需要将其左边，下方，右下方用一个骨牌填充即可，其他方向棋盘同理</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">//骨牌编号</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ChessBoard</span><span class="params">(<span class="keyword">int</span> tr,<span class="keyword">int</span> tc,<span class="keyword">int</span> dr,<span class="keyword">int</span> dc,<span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(size == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> s = size / <span class="number">2</span>;</span><br><span class="line">    t++;</span><br><span class="line">    <span class="comment">//左上角</span></span><br><span class="line">    <span class="keyword">if</span>(dr &lt; tr + s &amp;&amp; dc &lt; tc + s)</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr,tc,dr,dc,s);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        board[tr+s<span class="number">-1</span>][tc+s<span class="number">-1</span>] = t;</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr,tc,tr+s<span class="number">-1</span>,tc+s<span class="number">-1</span>,s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//右上角</span></span><br><span class="line">    <span class="keyword">if</span>(dr &lt; tr + s &amp;&amp; dc &gt;= tc + s)</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr,tc+s,dr,dc,s);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        board[tr+s<span class="number">-1</span>][tc+s] = t;</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr,tc+s,tr+s<span class="number">-1</span>,tc+s,s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//左下角</span></span><br><span class="line">        <span class="keyword">if</span>(dr &gt;= tr + s &amp;&amp; dc &lt; tc + s)</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr+s,tc,dr,dc,s);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        board[tr+s][tc+s<span class="number">-1</span>] = t;</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr+s,tc,tr+s,tc+s<span class="number">-1</span>,s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//右下角</span></span><br><span class="line">        <span class="keyword">if</span>(dr &gt;= tr + s &amp;&amp; dc &gt;= tc + s)</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr+s,tc+s,dr,dc,s);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        board[tr+s][tc+s] = t;</span><br><span class="line">        <span class="built_in">ChessBoard</span>(tr+s,tc+s,tr+s,tc+s,s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度"><a href="#4-复杂度" class="headerlink" title="4.复杂度"></a>4.复杂度</h1><p>时间复杂度：</p><p>当n=1时，T(n) = 1;</p><p>当n&gt;1时，T(n) = 4T(n/2) + O(1)</p><p>由主定理可得T(n)为O(n²)</p><p>又因为n = 2^k</p><p>解得T(k) = 4^k</p><p>空间复杂度：</p><p>O(1)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 实例 </category>
+          
+          <category> 分治法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 分治法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>分治法--求sqrt(2)</title>
+      <link href="/archives/a479b42c.html"/>
+      <url>/archives/a479b42c.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>已知sqrt(2)约等于1.414，求sqrt(2)精确到小数点后10位</p><h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>1.已知sqrt(2)的范围，可设定区间(1.4,1.5)</p><p>2.二分区间，分割点mid=(left + right) / 2,如果mid*mid &gt; 2，则mid = right，否则mid = left</p><p>3.定义参数exp = 0.0000000001，当right - left &lt;= exp时调出循环</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> exp = <span class="number">0.0000000001</span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">sqrt2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> left = <span class="number">1.4</span>,right = <span class="number">1.5</span>;</span><br><span class="line">    <span class="keyword">double</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span>((right - left) &gt; exp)&#123;</span><br><span class="line">        <span class="keyword">if</span>(mid * mid &gt; <span class="number">2</span>)</span><br><span class="line">            right = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            low = mid;</span><br><span class="line">        mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度"><a href="#4-复杂度" class="headerlink" title="4.复杂度"></a>4.复杂度</h1><p>时间复杂度：</p><p>O(logn)：其实质就为二分查找</p><p>空间复杂度：</p><p>O(1)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 实例 </category>
+          
+          <category> 分治法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 分治法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>分治法--汉诺塔</title>
+      <link href="/archives/7ea573da.html"/>
+      <url>/archives/7ea573da.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>给定3个柱子以及N个圆盘，一开始，所有盘子自上而下按升序依次套在第一根柱子上(即每一个盘子只能放在更大的盘子上面)。移动圆盘时受到以下限制:<br>(1) 每次只能移动一个盘子;<br>(2) 盘子只能从柱子顶端滑出移到下一根柱子;<br>(3) 盘子只能叠在比它大的盘子上。</p><p>请编写程序，用栈将所有盘子从第一根柱子移到最后一根柱子。</p><h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>1.当n=1，即仅有一个圆盘时：</p><p>我们仅需将盘从A柱移动到C柱</p><p>2.当盘子数大于1时，有如下步骤：</p><ul><li>将A柱上的n-1个盘子移动到B柱</li><li>A柱上最大的盘子移动到C柱</li><li>将B柱上n-1个盘子移动到C柱</li></ul><p>由此思路，代码可解。</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hanota</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; A,vector&lt;<span class="keyword">int</span>&gt;&amp; B,vector&lt;<span class="keyword">int</span>&gt;&amp; C)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = A.<span class="built_in">size</span>();</span><br><span class="line">    <span class="built_in">move</span>(n,A,B,C);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> move)(<span class="keyword">int</span> n,vector&lt;<span class="keyword">int</span>&gt;&amp; A,vector&lt;<span class="keyword">int</span>&gt;&amp; B,vector&lt;<span class="keyword">int</span>&gt;&amp; C)&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">        C.<span class="built_in">push_back</span>(A.<span class="built_in">bcak</span>());</span><br><span class="line">        A.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">move</span>(n<span class="number">-1</span>,A,C,B);</span><br><span class="line">    C.<span class="built_in">push_back</span>(A.<span class="built_in">back</span>());</span><br><span class="line">    A.<span class="built_in">pop_back</span>();</span><br><span class="line">    <span class="built_in">move</span>(n<span class="number">-1</span>,B,A,C);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度"><a href="#4-复杂度" class="headerlink" title="4.复杂度"></a>4.复杂度</h1><p>时间复杂度：</p><p>当n=1时，T(n) = 1;</p><p>当n&gt;1时，T(n) = 2T(n-1) + O(1)</p><p>递推得到T(n)  = O(2^n)</p><p>空间复杂度：</p><p>O(1)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 实例 </category>
+          
+          <category> 分治法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 分治法 </tag>
             
         </tags>
       
