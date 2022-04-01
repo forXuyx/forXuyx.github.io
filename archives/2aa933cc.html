@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>机器学习--逻辑回归 | 安静燃烧的火焰</title><meta name="keywords" content="机器学习"><meta name="author" content="小舟眺微风"><meta name="copyright" content="小舟眺微风"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="逻辑回归与二分类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习--逻辑回归">
+<meta property="og:url" content="http://forxuyx.github.io/archives/2aa933cc.html">
+<meta property="og:site_name" content="安静燃烧的火焰">
+<meta property="og:description" content="逻辑回归与二分类">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://forxuyx.github.io/img/rgzn.jpg">
+<meta property="article:published_time" content="2021-02-26T02:42:32.000Z">
+<meta property="article:modified_time" content="2022-04-01T14:54:36.165Z">
+<meta property="article:author" content="小舟眺微风">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://forxuyx.github.io/img/rgzn.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://forxuyx.github.io/archives/2aa933cc"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-4EpBxa0Jzw"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '机器学习--逻辑回归',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-01 22:54:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="安静燃烧的火焰" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/tx.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/rgzn.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">安静燃烧的火焰</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">机器学习--逻辑回归</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-26T02:42:32.000Z" title="发表于 2021-02-26 10:42:32">2021-02-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-01T14:54:36.165Z" title="更新于 2022-04-01 22:54:36">2022-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">757</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="机器学习--逻辑回归"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-逻辑回归的应用场景"><a href="#1-逻辑回归的应用场景" class="headerlink" title="1.逻辑回归的应用场景"></a>1.逻辑回归的应用场景</h1><p>用于解决二分类问题的利器</p>
+<h1 id="2-逻辑回归的原理"><a href="#2-逻辑回归的原理" class="headerlink" title="2.逻辑回归的原理"></a>2.逻辑回归的原理</h1><h2 id="2-1输入"><a href="#2-1输入" class="headerlink" title="2.1输入"></a>2.1输入</h2><p>h(w) = w1x1 + w2x2 + … … + b</p>
+<p>逻辑回归的输入是一个线性回归问题</p>
+<h2 id="2-2激活函数"><a href="#2-2激活函数" class="headerlink" title="2.2激活函数"></a>2.2激活函数</h2><p>sigmoid函数</p>
+<ul>
+<li>回归的结果输入到sigmoid函数中</li>
+<li>输出[0,1]区间的一个概率值，默认0.5为阈值</li>
+</ul>
+<h2 id="2-3优化"><a href="#2-3优化" class="headerlink" title="2.3优化"></a>2.3优化</h2><p>采用梯度下降优化方法，减少损失函数的值。提升原本属于1类别的概率，降低原本是0类别的概率。</p>
+<h1 id="3-API"><a href="#3-API" class="headerlink" title="3.API"></a>3.API</h1><p>sklearn.linear_model.LogisticRegression(solver=’liblinear’, penalty=‘l2’, C = 1.0)</p>
+<ul>
+<li>solver:优化求解方式（默认开源的liblinear库实现，内部使用了坐标轴下降法来迭代优化损失函数）<ul>
+<li>sag：根据数据集自动选择，随机平均梯度下降</li>
+</ul>
+</li>
+<li>penalty：正则化的种类</li>
+<li>C：正则化力度</li>
+</ul>
+<h1 id="4-分类的评估方法"><a href="#4-分类的评估方法" class="headerlink" title="4.分类的评估方法"></a>4.分类的评估方法</h1><h2 id="4-1精确率与召回率"><a href="#4-1精确率与召回率" class="headerlink" title="4.1精确率与召回率"></a>4.1精确率与召回率</h2><p>精确率：预测结果为正例样本中真实为正例的比例</p>
+<p>召回率：真实为正例的样本中预测结果为正例的比例</p>
+<p>API：</p>
+<ul>
+<li>sklearn.metrics.classification_report(y_true, y_pred, labels=[], target_names=None ) </li>
+<li><ul>
+<li>y_true：真实目标值</li>
+<li>y_pred：估计器预测目标值</li>
+<li>labels:指定类别对应的数字</li>
+<li>target_names：目标类别名称</li>
+<li>return：每个类别精确率与召回率</li>
+</ul>
+</li>
+</ul>
+<p>但假设有这样一种情况，我有99个为1,1个为0，不管怎样预测，准确率都为99%，但其实效果并不好，为了衡量样本不平均，我们引入如下概念。</p>
+<h2 id="4-2ROC曲线与AUC指标"><a href="#4-2ROC曲线与AUC指标" class="headerlink" title="4.2ROC曲线与AUC指标"></a>4.2ROC曲线与AUC指标</h2><h3 id="4-2-1-知道TPR与FPR"><a href="#4-2-1-知道TPR与FPR" class="headerlink" title="4.2.1 知道TPR与FPR"></a>4.2.1 知道TPR与FPR</h3><ul>
+<li>TPR = TP / (TP + FN)<ul>
+<li>所有真实类别为1的样本中，预测类别为1的比例</li>
+</ul>
+</li>
+<li>FPR = FP / (FP + FN)<ul>
+<li>所有真实类别为0的样本中，预测类别为1的比例</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-2-2-ROC曲线"><a href="#4-2-2-ROC曲线" class="headerlink" title="4.2.2 ROC曲线"></a>4.2.2 ROC曲线</h3><ul>
+<li>ROC曲线的横轴就是FPRate，纵轴就是TPRate，当二者相等时，表示的意义则是：对于不论真实类别是1还是0的样本，分类器预测为1的概率是相等的，此时AUC为0.5 </li>
+</ul>
+<h3 id="4-2-3AUC指标"><a href="#4-2-3AUC指标" class="headerlink" title="4.2.3AUC指标"></a>4.2.3AUC指标</h3><ul>
+<li>AUC的概率意义是随机取一对正负样本，正样本得分大于负样本的概率</li>
+<li>AUC的最小值为0.5，最大值为1，取值越高越好</li>
+<li><strong>AUC=1，完美分类器，采用这个预测模型时，不管设定什么阈值都能得出完美预测。绝大多数预测的场合，不存在完美分类器。</strong></li>
+<li><strong>0.5&lt;AUC&lt;1，优于随机猜测。这个分类器（模型）妥善设定阈值的话，能有预测价值。</strong></li>
+</ul>
+<blockquote>
+<p><strong>最终AUC的范围在[0.5, 1]之间，并且越接近1越好</strong></p>
+</blockquote>
+<h3 id="4-2-4-AUC计算API"><a href="#4-2-4-AUC计算API" class="headerlink" title="4.2.4 AUC计算API"></a>4.2.4 AUC计算API</h3><ul>
+<li>from sklearn.metrics import  roc_auc_score<ul>
+<li>sklearn.metrics.roc_auc_score(y_true, y_score)<ul>
+<li>计算ROC曲线面积，即AUC值</li>
+<li>y_true:每个样本的真实类别，必须为0(反例),1(正例)标记</li>
+<li>y_score:每个样本预测的概率值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h1><ul>
+<li>AUC只能用来评价二分类</li>
+<li>AUC非常适合评价样本不平衡中的分类器性能</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></div><div class="post_share"><div class="social-share" data-image="/./img/rgzn.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/ff120eab.html"><img class="prev-cover" src="/./img/sjwj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ARIMA模型原理剖析</div></div></a></div><div class="next-post pull-right"><a href="/archives/2a688ebd.html"><img class="next-cover" src="/./img/rgzn.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">机器学习--决策树</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/archives/3ace8ae1.html" title="机器学习--KNN近邻算法"><img class="cover" src="/./img/rgzn.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-06</div><div class="title">机器学习--KNN近邻算法</div></div></a></div><div><a href="/archives/2a688ebd.html" title="机器学习--决策树"><img class="cover" src="/./img/rgzn.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-17</div><div class="title">机器学习--决策树</div></div></a></div><div><a href="/archives/d64fc39f.html" title="机器学习--数据集划分与介绍"><img class="cover" src="/./img/rgzn.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-31</div><div class="title">机器学习--数据集划分与介绍</div></div></a></div><div><a href="/archives/cc7d3c32.html" title="机器学习--朴素贝叶斯"><img class="cover" src="/./img/rgzn.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-17</div><div class="title">机器学习--朴素贝叶斯</div></div></a></div><div><a href="/archives/988ff286.html" title="机器学习--模型选择与调优"><img class="cover" src="/./img/rgzn.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-15</div><div class="title">机器学习--模型选择与调优</div></div></a></div><div><a href="/archives/9a03a718.html" title="sklearn转换器和估计器"><img class="cover" src="/./img/rgzn.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-04</div><div class="title">sklearn转换器和估计器</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NTA3Ny8zMTU0NQ=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/tx.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小舟眺微风</div><div class="author-info__description">算法|机器学习|人工智能</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/forXuyx"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/forXuyx" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:523185731@qq.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://forxuyx.github.io/" target="_blank" title="Blog"><i class="fas fa-blog"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">1.逻辑回归的应用场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">2.逻辑回归的原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E8%BE%93%E5%85%A5"><span class="toc-number">2.1.</span> <span class="toc-text">2.1输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">2.2激活函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3%E4%BC%98%E5%8C%96"><span class="toc-number">2.3.</span> <span class="toc-text">2.3优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-API"><span class="toc-number">3.</span> <span class="toc-text">3.API</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%88%86%E7%B1%BB%E7%9A%84%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">4.分类的评估方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1%E7%B2%BE%E7%A1%AE%E7%8E%87%E4%B8%8E%E5%8F%AC%E5%9B%9E%E7%8E%87"><span class="toc-number">4.1.</span> <span class="toc-text">4.1精确率与召回率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2ROC%E6%9B%B2%E7%BA%BF%E4%B8%8EAUC%E6%8C%87%E6%A0%87"><span class="toc-number">4.2.</span> <span class="toc-text">4.2ROC曲线与AUC指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-%E7%9F%A5%E9%81%93TPR%E4%B8%8EFPR"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1 知道TPR与FPR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-ROC%E6%9B%B2%E7%BA%BF"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2 ROC曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-3AUC%E6%8C%87%E6%A0%87"><span class="toc-number">4.2.3.</span> <span class="toc-text">4.2.3AUC指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-4-AUC%E8%AE%A1%E7%AE%97API"><span class="toc-number">4.2.4.</span> <span class="toc-text">4.2.4 AUC计算API</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">5.总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/ecd6af03.html" title="操作系统--计算机系统概述"><img src="/./img/czxt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统--计算机系统概述"/></a><div class="content"><a class="title" href="/archives/ecd6af03.html" title="操作系统--计算机系统概述">操作系统--计算机系统概述</a><time datetime="2022-02-26T13:04:23.000Z" title="发表于 2022-02-26 21:04:23">2022-02-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/ff120eab.html" title="ARIMA模型原理剖析"><img src="/./img/sjwj.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ARIMA模型原理剖析"/></a><div class="content"><a class="title" href="/archives/ff120eab.html" title="ARIMA模型原理剖析">ARIMA模型原理剖析</a><time datetime="2021-03-16T10:42:32.000Z" title="发表于 2021-03-16 18:42:32">2021-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/2aa933cc.html" title="机器学习--逻辑回归"><img src="/./img/rgzn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机器学习--逻辑回归"/></a><div class="content"><a class="title" href="/archives/2aa933cc.html" title="机器学习--逻辑回归">机器学习--逻辑回归</a><time datetime="2021-02-26T02:42:32.000Z" title="发表于 2021-02-26 10:42:32">2021-02-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/2a688ebd.html" title="机器学习--决策树"><img src="/./img/rgzn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机器学习--决策树"/></a><div class="content"><a class="title" href="/archives/2a688ebd.html" title="机器学习--决策树">机器学习--决策树</a><time datetime="2021-02-17T02:42:32.000Z" title="发表于 2021-02-17 10:42:32">2021-02-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/cc7d3c32.html" title="机器学习--朴素贝叶斯"><img src="/./img/rgzn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机器学习--朴素贝叶斯"/></a><div class="content"><a class="title" href="/archives/cc7d3c32.html" title="机器学习--朴素贝叶斯">机器学习--朴素贝叶斯</a><time datetime="2021-02-17T02:42:32.000Z" title="发表于 2021-02-17 10:42:32">2021-02-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 小舟眺微风</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">你我山巅自相逢</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (true) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
