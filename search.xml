@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>粒子分类算法</title>
+      <link href="/archives/e1469f71.html"/>
+      <url>/archives/e1469f71.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-前置知识"><a href="#1-前置知识" class="headerlink" title="1.前置知识"></a>1.前置知识</h1><p>π介子是基本粒子的一种。属介子类，自旋角动量为0。它分为三种：π+、π-和π0，每个介子由一个夸克和反夸克组成。</p><h1 id="2-数据来源"><a href="#2-数据来源" class="headerlink" title="2.数据来源"></a>2.数据来源</h1><p>kaggle –从检测器相应中识别粒子</p><h1 id="3-实验目的"><a href="#3-实验目的" class="headerlink" title="3.实验目的"></a>3.实验目的</h1><p>利用机器学习分类算法，从大量的粒子中识别出π介子，并从多个分类算法中选取一个最优模型。</p><p>考虑采用算法如下：</p><ul><li>逻辑回归</li><li>KNN近邻算法</li><li>决策树算法</li><li>随机森林</li></ul><h1 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4.代码实现"></a>4.代码实现</h1><h2 id="4-1导入数据"><a href="#4-1导入数据" class="headerlink" title="4.1导入数据"></a>4.1导入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导包</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;pid-5M.csv&#x27;</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure><p><img src="D:\Study\Blog\source_posts\1.jpg" alt="1"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+          <category> 实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+            <tag> 实战 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>操作系统--计算机系统概述</title>
       <link href="/archives/ecd6af03.html"/>
       <url>/archives/ecd6af03.html</url>
@@ -355,37 +384,6 @@
     
     
     <entry>
-      <title>分治法--汉诺塔</title>
-      <link href="/archives/7ea573da.html"/>
-      <url>/archives/7ea573da.html</url>
-      
-        <content type="html"><![CDATA[<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>给定3个柱子以及N个圆盘，一开始，所有盘子自上而下按升序依次套在第一根柱子上(即每一个盘子只能放在更大的盘子上面)。移动圆盘时受到以下限制:<br>(1) 每次只能移动一个盘子;<br>(2) 盘子只能从柱子顶端滑出移到下一根柱子;<br>(3) 盘子只能叠在比它大的盘子上。</p><p>请编写程序，用栈将所有盘子从第一根柱子移到最后一根柱子。</p><h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>1.当n=1，即仅有一个圆盘时：</p><p>我们仅需将盘从A柱移动到C柱</p><p>2.当盘子数大于1时，有如下步骤：</p><ul><li>将A柱上的n-1个盘子移动到B柱</li><li>A柱上最大的盘子移动到C柱</li><li>将B柱上n-1个盘子移动到C柱</li></ul><p>由此思路，代码可解。</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hanota</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; A,vector&lt;<span class="keyword">int</span>&gt;&amp; B,vector&lt;<span class="keyword">int</span>&gt;&amp; C)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = A.<span class="built_in">size</span>();</span><br><span class="line">    <span class="built_in">move</span>(n,A,B,C);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> move)(<span class="keyword">int</span> n,vector&lt;<span class="keyword">int</span>&gt;&amp; A,vector&lt;<span class="keyword">int</span>&gt;&amp; B,vector&lt;<span class="keyword">int</span>&gt;&amp; C)&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">        C.<span class="built_in">push_back</span>(A.<span class="built_in">bcak</span>());</span><br><span class="line">        A.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">move</span>(n<span class="number">-1</span>,A,C,B);</span><br><span class="line">    C.<span class="built_in">push_back</span>(A.<span class="built_in">back</span>());</span><br><span class="line">    A.<span class="built_in">pop_back</span>();</span><br><span class="line">    <span class="built_in">move</span>(n<span class="number">-1</span>,B,A,C);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度"><a href="#4-复杂度" class="headerlink" title="4.复杂度"></a>4.复杂度</h1><p>时间复杂度：</p><p>当n=1时，T(n) = 1;</p><p>当n&gt;1时，T(n) = 2T(n-1) + O(1)</p><p>递推得到T(n)  = O(2^n)</p><p>空间复杂度：</p><p>O(1)</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法 </category>
-          
-          <category> 实例 </category>
-          
-          <category> 分治法 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 分治法 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>动态规划--单词拆分</title>
       <link href="/archives/7a8d0124.html"/>
       <url>/archives/7a8d0124.html</url>
@@ -409,6 +407,37 @@
             <tag> 算法 </tag>
             
             <tag> 动态规划 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>分治法--汉诺塔</title>
+      <link href="/archives/7ea573da.html"/>
+      <url>/archives/7ea573da.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h1><p>给定3个柱子以及N个圆盘，一开始，所有盘子自上而下按升序依次套在第一根柱子上(即每一个盘子只能放在更大的盘子上面)。移动圆盘时受到以下限制:<br>(1) 每次只能移动一个盘子;<br>(2) 盘子只能从柱子顶端滑出移到下一根柱子;<br>(3) 盘子只能叠在比它大的盘子上。</p><p>请编写程序，用栈将所有盘子从第一根柱子移到最后一根柱子。</p><h1 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2.解题思路"></a>2.解题思路</h1><p>1.当n=1，即仅有一个圆盘时：</p><p>我们仅需将盘从A柱移动到C柱</p><p>2.当盘子数大于1时，有如下步骤：</p><ul><li>将A柱上的n-1个盘子移动到B柱</li><li>A柱上最大的盘子移动到C柱</li><li>将B柱上n-1个盘子移动到C柱</li></ul><p>由此思路，代码可解。</p><h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hanota</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; A,vector&lt;<span class="keyword">int</span>&gt;&amp; B,vector&lt;<span class="keyword">int</span>&gt;&amp; C)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = A.<span class="built_in">size</span>();</span><br><span class="line">    <span class="built_in">move</span>(n,A,B,C);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> move)(<span class="keyword">int</span> n,vector&lt;<span class="keyword">int</span>&gt;&amp; A,vector&lt;<span class="keyword">int</span>&gt;&amp; B,vector&lt;<span class="keyword">int</span>&gt;&amp; C)&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">        C.<span class="built_in">push_back</span>(A.<span class="built_in">bcak</span>());</span><br><span class="line">        A.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">move</span>(n<span class="number">-1</span>,A,C,B);</span><br><span class="line">    C.<span class="built_in">push_back</span>(A.<span class="built_in">back</span>());</span><br><span class="line">    A.<span class="built_in">pop_back</span>();</span><br><span class="line">    <span class="built_in">move</span>(n<span class="number">-1</span>,B,A,C);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="4-复杂度"><a href="#4-复杂度" class="headerlink" title="4.复杂度"></a>4.复杂度</h1><p>时间复杂度：</p><p>当n=1时，T(n) = 1;</p><p>当n&gt;1时，T(n) = 2T(n-1) + O(1)</p><p>递推得到T(n)  = O(2^n)</p><p>空间复杂度：</p><p>O(1)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 实例 </category>
+          
+          <category> 分治法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 分治法 </tag>
             
         </tags>
       
