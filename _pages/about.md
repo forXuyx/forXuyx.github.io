@@ -12,7 +12,7 @@ I'm a second year graduate student from [University of Chinese Academy of Scienc
 
 I am very fortunate to be advised by [Prof. Xu](https://people.ucas.ac.cn/~pengxu) of Taiji Lab from [Institute of Mechanics](https://taiji.ictp-ap.org/), Chinese Academy of Sciences.
 
-[Email](mailto:xuyuxiang22@mails.ucas.ac.cn) / [Github](https://github.com/forXuyx) / [Wechat](../images/wechat.jpg) / [CSDN](https://blog.csdn.net/weixin_44446079?spm=1000.2115.3001.5343)
+[Email](mailto:xuyuxiang22@mails.ucas.ac.cn) / [Github](https://github.com/forXuyx) / [CSDN](https://blog.csdn.net/weixin_44446079?spm=1000.2115.3001.5343)
 ————————————————
 
 A data-driven personal website
