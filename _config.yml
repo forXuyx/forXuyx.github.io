@@ -7,11 +7,11 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Your Name / Site Title"
+title                    : "Yuxiang Xu / Personal Homepage"
 title_separator          : "-"
-name                     : &name "Your Name"
+name                     : &name "Yuxiang Xu"
 description              : &description "personal description"
-url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://forXuyx.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "academicpages/academicpages.github.io"
 
@@ -21,11 +21,11 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  name             : "Yuxiang Xu"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "Stay humble and keep improving."
   location         : "Earth"
-  employer         : "Red Brick University"
+  employer         : "University of Chinese Academy of Sciences"
   uri              : # URL
   email            : "none@example.org" 
 
