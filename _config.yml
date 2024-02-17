@@ -24,10 +24,8 @@ author:
   name             : "Yuxiang Xu"
   pronouns         : # example: "she/her"  
   bio              : "Stay humble and keep improving."
-  location         : "Earth"
-  employer: >
-    University of Chinese 
-    Academy of Sciences
+  location         : "Beijing, China"
+  employer         : # ""
   uri              : # URL
   email            : "xuyuxiang22@mails.ucas.ac.cn" 
 
