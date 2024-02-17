@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I'm a second year graduate student from [University of Chinese Academy of Sciences](https://www.ucas.ac.cn/). My research interest includes signal processing, computer vision and machine learning.
+I'm a second year graduate student from [University of Chinese Academy of Sciences](https://www.ucas.ac.cn/). My research mainly focuses on AI for Science, and I am also very interested in computer vision and machine learning.
 
 I am very fortunate to be advised by [Prof. Xu](https://people.ucas.ac.cn/~pengxu) of Taiji Lab from [Institute of Mechanics](https://taiji.ictp-ap.org/), Chinese Academy of Sciences.
 
