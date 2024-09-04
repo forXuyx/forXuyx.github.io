@@ -19,7 +19,6 @@ Work experience
 * Autumn 2021: C++ Engineer
   * Fengyou, China Electronic Corporation
   * Duties includes: Simple algorithm construction, system testing and related document writing.
-  * Supervisor: The Users
   
 Skills
 ======
